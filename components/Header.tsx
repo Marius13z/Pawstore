@@ -42,7 +42,7 @@ const Header = () => {
 
   return (
     <>
-    <nav className="relative scrollbar-hide  flex justify-between py-3 px-8 md:px-16 items-center bg-white">
+    <nav className="relative scrollbar-hide  flex justify-between py-3 px-2 sm:px-8 md:px-16 items-center bg-white">
 
       {/* Left */}
       <div onClick={() => router.push("/")} className="h-12 w-12 flex items-center space-x-1 cursor-pointer">
@@ -107,7 +107,7 @@ const Header = () => {
         />
 
         <SearchIcon className={`text-primary ${open ? "h-6" : "h-5"}`}/>
-        <XCircleIcon onClick={handleCloseSearch} className={`h-6 text-primary absolute -right-9 hover:rotate-90 transition duration-300 
+        <XCircleIcon onClick={handleCloseSearch} className={`h-6 text-primary absolute -right-9 pr-2 hover:rotate-90 transition duration-300 
         ${ open ? "block" : "hidden"}`}/>
         </div>
       

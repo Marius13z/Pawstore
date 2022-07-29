@@ -19,17 +19,15 @@
         transition text-white hover:bg-primary duration-200 active:shadow-sm ease-out
     }
     .signInButton {
-        @apply flex  text-primary w-52 justify-center h-9 items-center rounded-md text-xs shadow-md hover:shadow-sm transition duration-300 ease-out
-    }
-    .mainHeading {
-        @apply text-primary font-bold md:text-3xl lg:text-3xl xl:text-6xl text-xl tracking-wide max-w-[500px]
-    }
-    .smallParagraph {
-        @apply text-third pt-3 pb-3 leading-[150%] max-w-md text-sm
+        @apply flex  text-primary w-52 justify-center h-9 items-center rounded-md  text-xs shadow-md hover:shadow-sm transition duration-300 ease-out
     }
 
-    .profile-button {
-        @apply w-48 h-12 outline-none rounded-md p-2 border-gray-200 shadow-md border font-semibold 
+    .profile-input {
+        @apply w-36 sm:w-48 sm:h-12 outline-none rounded-lg sm:rounded-md p-2 placeholder:text-xs md:placeholder:text-base border-primary border-b border-t-0 border-r-0 border-l-0 shadow-md bg-white border font-semibold 
         placeholder:font-normal placeholder:text-third
+    }
+
+    .profile-label {
+        @apply font-semibold  text-sm lg:text-base text-primary
     }
 }

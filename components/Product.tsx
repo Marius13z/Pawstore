@@ -18,7 +18,7 @@ const Product = () => {
 
 
   return (
-    <div className="min-h-[80vh] mt-10 flex px-16 md:items-center">
+    <div className="min-h-[80vh] mt-10 flex md:px-16 md:items-center">
         <BigCard image={product?.data().image} 
         key={product?.id} 
         id={product?.id} 

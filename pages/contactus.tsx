@@ -18,30 +18,31 @@ const contactus:NextPage = () => {
     <>
     {!sentForm ? (
     <div className="flex justify-center space-y-3 items-center h-[80vh] flex-col">
-       <h1 className="text-primary font-medium text-2xl ">Contact us through the form below!</h1>
-       <hr className="h-[3px] w-[350px] text-primary bg-primary"/>
+       <h1 className="text-primary font-normal sm:font-medium text-lg sm:text-xl md:text-2xl ">Contact us through the form below!</h1>
+       <hr className="h-[2px] w-[250px] sm:h-[3px] sm:w-[350px] text-primary bg-primary"/>
 
        <div className="relative space-y-5 right-2">
 
        <div className="flex flex-col pt-5">
-       <label className="text-primary font-medium">E-mail</label>
-       <input className="shadow-md outline-none w-[250px] border-primary p-2
-       rounded-lg border placeholder:text-third text-sm text-primary"
+       <label className="text-primary text-xs sm:text-base font-medium">E-mail</label>
+       <input className="shadow-md outline-none w-[150px] sm:w-[250px] border-b border-t-0 border-right-0 border-top-0 border-primary p-2
+       rounded-lg placeholder:text-third text-sm text-primary placeholder:text-xs sm:placeholder:text-sm"
        placeholder="ex: abcdefgh@gmail.com"
        />
 
        </div>
        <div className="flex pb-2 flex-col">
-       <label className="text-primary font-medium">Feedback</label>
+       <label className="text-primary text-xs sm:text-base font-medium">Feedback</label>
        <textarea className="shadow-md outline-none border-primary p-1
-       rounded-lg border h-[200px] w-[350px] pl-2 pr-2 placeholder:text-third text-sm text-primary"
+       rounded-lg border-b border-t-0 border-right-0 border-top-0 h-[200px] w-[250px]
+        sm:w-[350px] pl-2 pr-2 placeholder:text-third text-x sm:text-sm placeholder:text-xs sm:placeholder:text-sm  text-primary"
        placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
        Proin sed mauris et nulla pretium. Nunc rutrum amet et elementum sit neque. 
        Turpis gravida feugiat ornare vulputate cum magna nulla orci. "
        />
 
        </div>
-       <button onClick={handleForm} className="rounded-lg w-[350px] hover:bg-secondary hover:border-secondary
+       <button onClick={handleForm} className="rounded-lg w-[250px] sm:w-[350px] hover:bg-secondary hover:border-secondary
         transition duration-300
         p-2 text-xs bg-primary border text-white">Send Message</button>
        </div>

@@ -27,19 +27,19 @@ const UserCart:React.FC<Props> = ({ image, name, price, id, quantity }) => {
   return (
   
 
-        <div className="items-center flex border w-96 lg:w-[600px] lg:h-[150px] 
-        h-28 rounded-xl bg-white  border-primary shadow-md">
+        <div className="items-center flex border w-68  lg:w-[600px] lg:h-[150px] 
+        h-24 sm:h-28 rounded-xl bg-white  border-primary shadow-md">
             <img onClick={() => router.push(`/treats/${id}`)} className="object-contain cursor-pointer 
-             h-[100px] w-[130px] lg:h-[130px] lg:w-[200px] p-1" src={image}/>
-            <div className="flex flex-col lg:pl-4 space-y-2">
-              <h2 className="font-bold w-56 text-primary">{name}</h2>             
+            h-[80px]  sm:h-[100px] sm:w-[130px]  lg:h-[130px] lg:w-[200px] p-1" src={image}/>
+            <div className="flex flex-col pl-3 md:pl-0 lg:pl-4 space-y-2">
+              <h2 className="font-bold text-[0.65rem] sm:text-base w-48 sm:w-56 text-primary">{name}</h2>             
               <div className="flex space-x-5 ">
-                  <p className="text-sm font-medium text-primary">Price: <span className="text-secondary">{price} EUR</span></p>
-                  <p className="text-sm font-medium text-primary">Quantity: <span className="">{quantity}</span></p>
+                  <p className="text-xs sm:text-sm font-medium text-primary">Price: <span className="text-secondary">{price} EUR</span></p>
+                  <p className="text-xs sm:text-sm font-medium text-primary">Quantity: <span className="">{quantity}</span></p>
               </div>
             </div>
             <button onClick={deleteProductFromCart}>
-              <XCircleIcon className="h-5 lg:h-7 relative bottom-[40px] left-[2px] lg:left-[123px] lg:bottom-[55px] 
+              <XCircleIcon className="h-4 sm:h-5 lg:h-7 relative -left-[5px] bottom-[33px] md:bottom-[40px] md:left-[-2px] lg:left-[123px] lg:bottom-[55px] 
                text-primary hover:rotate-90 transition duration-300 hover:text-red-500"/>
             </button>
         </div>   

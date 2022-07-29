@@ -24,7 +24,7 @@ const Home: NextPage = () => {
 
 
   return (
-    <div className="h-[100vh]">
+    <div className="px-16">
       
       {/* Hero */}
       <Hero/>

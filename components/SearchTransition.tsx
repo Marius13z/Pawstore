@@ -65,12 +65,12 @@ const SearchTransition = () => {
               </div>
              ) : (
 
-              <div className="flex grow px-12 sm:px-14 mt-10  md:px-16 w-screen justify-end md:justify-center">
-               <div className="md:w-[45px]">
+              <div className="flex grow  mt-10  md:px-16 w-screen justify-end md:justify-center">
+               <div className="w-[50px] sm:w-[65px]">
 
                </div>
               
-              <div className="flex w-[240px] md:w-[512px] lg:w-[576px] shadow-lg rounded-xl  bg-white
+              <div className="flex grow sm:grow-0 w-[240px] md:w-[512px] lg:w-[576px] shadow-lg rounded-xl  bg-white
                 transform transition-all mt-10
                 ">
 
