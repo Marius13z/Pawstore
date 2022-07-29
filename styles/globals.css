@@ -1,3 +1,35 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+    .navBtn {
+        @apply border rounded-lg border-primary p-1 shadow-md active:scale-90 cursor-pointer transition duration-100 ease-out;
+    }
+    .heroItems {
+        @apply absolute rounded-full w-[80px] md:h-[100px] md:w-[100px] h-[80px] object-contain
+        rotate-12 bg-white p-5 
+    }
+    .primaryButton {
+        @apply bg-white text-primary hover:border-primary  border rounded-lg text-xs font-semibold shadow-md
+        w-28 h-8 md:w-32 md:h-9 active:scale-90 active:shadow-sm transition duration-300 ease-out
+    }
+    .accentButton {
+        @apply bg-secondary rounded-lg font-semibold w-28 h-8 md:w-32 md:h-9 shadow-md text-xs
+        transition text-white hover:bg-primary duration-200 active:shadow-sm ease-out
+    }
+    .signInButton {
+        @apply flex  text-primary w-52 justify-center h-9 items-center rounded-md text-xs shadow-md hover:shadow-sm transition duration-300 ease-out
+    }
+    .mainHeading {
+        @apply text-primary font-bold md:text-3xl lg:text-3xl xl:text-6xl text-xl tracking-wide max-w-[500px]
+    }
+    .smallParagraph {
+        @apply text-third pt-3 pb-3 leading-[150%] max-w-md text-sm
+    }
+
+    .profile-button {
+        @apply w-48 h-12 outline-none rounded-md p-2 border-gray-200 shadow-md border font-semibold 
+        placeholder:font-normal placeholder:text-third
+    }
+}
