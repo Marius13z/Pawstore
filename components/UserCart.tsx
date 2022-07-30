@@ -30,9 +30,9 @@ const UserCart:React.FC<Props> = ({ image, name, price, id, quantity }) => {
         <div className="items-center flex border w-68  lg:w-[600px] lg:h-[150px] 
         h-24 sm:h-28 rounded-xl bg-white  border-primary shadow-md">
             <img onClick={() => router.push(`/treats/${id}`)} className="object-contain cursor-pointer 
-            h-[80px]  sm:h-[100px] sm:w-[130px]  lg:h-[130px] lg:w-[200px] p-1" src={image}/>
+            h-[80px] w-[80px] sm:h-[100px] sm:w-[130px]  lg:h-[130px] lg:w-[200px] p-1" src={image}/>
             <div className="flex flex-col pl-3 md:pl-0 lg:pl-4 space-y-2">
-              <h2 className="font-bold text-[0.65rem] sm:text-base w-48 sm:w-56 text-primary">{name}</h2>             
+              <h2 className="font-bold text-[0.65rem] sm:text-base w-32 sm:w-56 text-primary">{name}</h2>             
               <div className="flex space-x-5 ">
                   <p className="text-xs sm:text-sm font-medium text-primary">Price: <span className="text-secondary">{price} EUR</span></p>
                   <p className="text-xs sm:text-sm font-medium text-primary">Quantity: <span className="">{quantity}</span></p>
