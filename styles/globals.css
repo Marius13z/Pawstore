@@ -30,4 +30,12 @@
     .profile-label {
         @apply font-semibold  text-sm lg:text-base text-primary
     }
+    
+    .checkout-label {
+        @apply text-xs sm:text-sm text-primary
+    }
+
+    .checkout-container {
+        @apply border-b flex items-center  p-2 max-w-[120px] sm:min-w-[240px] md:h-[35px] md:rounded-lg h-[33px] rounded-md shadow-md border-primary
+    }
 }
