@@ -118,7 +118,7 @@ const Header = () => {
 
         <div className="absolute h-6 w-6 bottom-5 left-5
         border-4 border-white text-center text-[10px] text-white rounded-full bg-primary">
-         <p>{user ? (productsNumber && productsNumber) : ""}</p>
+         <p>{productsNumber ? productsNumber : 0}</p>
         </div>
 
         </div>
