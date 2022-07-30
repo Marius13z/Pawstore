@@ -90,7 +90,7 @@ const Header = () => {
        </ul>
 
       {/* Right */}
-      <div className={`flex space-x-4 ${open && "grow justify-end md:justify-center"}`}>
+      <div className={`flex space-x-4 ${open && "grow justify-center"}`}>
 
         <div onClick={() => setOpen(true)} className={`navBtn  md:hidden ${open ? "hidden" : "block"}`}>
         <MenuAlt2Icon className="h-5 text-primary"/>
@@ -107,7 +107,7 @@ const Header = () => {
         />
 
         <SearchIcon className={`text-primary ${open ? "h-6" : "h-5"}`}/>
-        <XCircleIcon onClick={handleCloseSearch} className={`h-6 text-primary absolute -right-9 pr-2 hover:rotate-90 transition duration-300 
+        <XCircleIcon onClick={handleCloseSearch} className={`h-6 text-primary absolute -right-9 hover:rotate-90 transition duration-300 
         ${ open ? "block" : "hidden"}`}/>
         </div>
       

@@ -52,25 +52,25 @@ const SearchTransition = () => {
              {closeSearch ? ( 
               <div className="flex flex-col relative h-[100vh] justify-center items-center space-y-5  md:hidden ">
                 <h1 onClick={() => handleMenuPush("treats")} 
-                className="text-white cursor-pointer hover:scale-125 duration-300 ease-out transition text-3xl">Treats</h1>
+                className="text-white cursor-pointer hover:scale-125 duration-300 ease-out transition text-xl">Treats</h1>
                 <h1 onClick={() => handleMenuPush("leash")} 
-                 className="text-white cursor-pointer hover:scale-125 duration-300 ease-out transition  text-3xl">Leash</h1>
+                 className="text-white cursor-pointer hover:scale-125 duration-300 ease-out transition  text-xl">Leash</h1>
                 <h1 onClick={() => handleMenuPush("toys")} 
-                 className="text-white cursor-pointer hover:scale-125 duration-300 ease-out transition  text-3xl">Toys</h1>
+                 className="text-white cursor-pointer hover:scale-125 duration-300 ease-out transition  text-xl">Toys</h1>
                 <div className="group">
                 <h1 onClick={() => handleMenuPush("contactus")} 
-                 className="text-white cursor-pointer hover:scale-125 duration-300 ease-out transition  text-3xl">Contact us</h1>
-                <ArrowRightIcon className="text-primary group-hover:-right-44 relative -top-6 -right-40  h-5" />
+                 className="text-white cursor-pointer hover:scale-125 duration-300 ease-out transition  text-xl">Contact us</h1>
+                <ArrowRightIcon className="text-primary group-hover:-right-32 relative -top-5 -right-28  h-4" />
                 </div>
               </div>
              ) : (
 
-              <div className="flex grow  mt-10  md:px-16 w-screen justify-end md:justify-center">
-               <div className="w-[50px] sm:w-[65px]">
+              <div className="flex grow  mt-10  md:px-16 w-screen justify-around md:justify-center">
+               <div className=" md:w-[65px]">
 
                </div>
               
-              <div className="flex grow sm:grow-0 w-[240px] md:w-[512px] lg:w-[576px] shadow-lg rounded-xl  bg-white
+              <div className="flex mr-5 ml-5 md:ml-0 md:mr-0 grow md:grow-0 w-[240px] md:w-[512px] lg:w-[576px] shadow-lg rounded-xl  bg-white
                 transform transition-all mt-10
                 ">
 
