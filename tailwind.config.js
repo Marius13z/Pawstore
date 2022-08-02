@@ -15,7 +15,7 @@ module.exports = {
         'blur-secondary': '#FFC065',
         'fourth': '#475A96',
         'fifth': '#4086F5',
-        'body': '#FDFFF9'
+        'body': '#FDFBFF'
       },
       gridTemplateRows: {
         '12': 'repeat(12, minmax(0, 1fr))' 

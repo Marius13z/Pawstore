@@ -113,7 +113,7 @@ const slug: NextPage = () => {
 
                     <button onClick={() => setHasEdited(false)}
                       type="submit"
-                      className="accentButton font-sm text-white mt-7">Save Details</button>
+                      className="accentButton font-sm bg-white text-white mt-7">Save Details</button>
 
 
                 ) : (

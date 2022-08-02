@@ -92,7 +92,7 @@ const Header = () => {
         </li>
 
         {/* Active heart based on user last accesed link - example Contact Page */}
-        <HeartIcon className={`h-3 absolute top-5 ease-out text-secondary duration-500 transition-all
+        <HeartIcon className={`h-3 absolute top-5 ease-out text-secondary duration-300 transition-all
         ${linkActive === "treats" && "right-60"}
         ${linkActive === "toys" && "right-[173px]"}
         ${linkActive === "leash" && "right-[107px]"}
