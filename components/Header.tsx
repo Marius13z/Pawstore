@@ -105,7 +105,7 @@ const Header = () => {
       <div className={`flex space-x-4 ${open && "grow justify-center"}`}>
 
         {/* Menu icon for phone screens */}
-        <div onClick={() => setOpen(true)} className={`navBtn  md:hidden ${open ? "hidden" : "block"}`}>
+        <div onClick={() => setOpen(true)} className={`navBtn bg-white  md:hidden ${open ? "hidden" : "block"}`}>
         <MenuAlt2Icon className="h-5 text-primary"/>
         </div>
 
@@ -141,7 +141,7 @@ const Header = () => {
         </div>
 
         {/* Icon to redirect user to his profile page */}
-        <div onClick={handleUserProfile} className={`navBtn ${open ? "hidden" : "flex"}`}>
+        <div onClick={handleUserProfile} className={`navBtn bg-white ${open ? "hidden" : "flex"}`}>
         <UserIcon className="h-5 text-primary"/>
         </div>
 
