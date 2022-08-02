@@ -4,9 +4,12 @@ import { useState } from "react"
 
 
 const contactus:NextPage = () => {
+  // Check if user sent the form or not
   const [sentForm, setSentForm] = useState<boolean>()
+  // Router used to push user to other pages
   const router = useRouter()
 
+  // When user has sent the form he will be redirected to homepage and shown a message 
   function handleForm() {
     setSentForm(true)
     setTimeout(() => {
@@ -16,6 +19,7 @@ const contactus:NextPage = () => {
 
   return (
     <>
+    {/* Form to contact the pawstore team regarding problems */}
     {!sentForm ? (
     <div className="flex justify-center space-y-3 items-center h-[80vh] flex-col">
        <h1 className="text-primary font-normal sm:font-medium text-lg sm:text-xl md:text-2xl ">Contact us through the form below!</h1>
@@ -42,6 +46,7 @@ const contactus:NextPage = () => {
        />
 
        </div>
+       {/* Button used so the user can send the form */}
        <button onClick={handleForm} className="rounded-lg w-[250px] sm:w-[350px] hover:bg-secondary hover:border-secondary
         transition duration-300
         p-2 text-xs bg-primary border text-white">Send Message</button>
@@ -49,6 +54,7 @@ const contactus:NextPage = () => {
     </div>
     ) : (
       <div className="flex flex-col h-[80vh] space-y-2 justify-center items-center">
+        {/* When user has sent the form this message will be displayed on his screen */}
       <h1 className=" text-center text-secondary text-2xl md:text-3xl">Thanks for reaching us</h1>
       <h1 className="text-secondary text-2xl md:text-2xl">We'll be back with and e-mail shortly!</h1>
     </div>

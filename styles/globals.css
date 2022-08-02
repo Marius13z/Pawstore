@@ -2,6 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+    body {
+        @apply scrollbar-none bg-body
+    }
+}
+
+@layer utilities {
+    input[type="number"]::-webkit-inner-spin-button,
+    input[type="number"]::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+  }
+
 @layer components {
     .navBtn {
         @apply border rounded-lg border-primary p-1 shadow-md active:scale-90 cursor-pointer transition duration-100 ease-out;
@@ -11,20 +25,20 @@
         rotate-12 bg-white p-5 
     }
     .primaryButton {
-        @apply bg-white text-primary hover:border-primary  border rounded-lg text-xs font-semibold shadow-md
-        w-28 h-8 md:w-32 md:h-9 active:scale-90 active:shadow-sm transition duration-300 ease-out
+        @apply bg-white text-primary hover:border-primary p-1 border rounded-lg text-xs font-semibold shadow-md
+        w-32 h-9 transition-all duration-300 ease-out
     }
     .accentButton {
-        @apply bg-secondary rounded-lg font-semibold w-28 h-8 md:w-32 md:h-9 shadow-md text-xs
-        transition text-white hover:bg-primary duration-200 active:shadow-sm ease-out
+        @apply bg-secondary rounded-lg font-semibold w-32 h-9  shadow-md text-xs
+        transition-all text-white hover:bg-primary duration-300 ease-out 
     }
     .signInButton {
         @apply flex  text-primary w-52 justify-center h-9 items-center rounded-md  text-xs shadow-md hover:shadow-sm transition duration-300 ease-out
     }
 
     .profile-input {
-        @apply w-36 sm:w-48 sm:h-12 outline-none rounded-lg sm:rounded-md p-2 placeholder:text-xs md:placeholder:text-base border-primary border-b border-t-0 border-r-0 border-l-0 shadow-md bg-white border font-semibold 
-        placeholder:font-normal placeholder:text-third
+        @apply w-36 sm:w-48 sm:h-12 outline-none rounded-lg sm:rounded-md p-2 placeholder:text-xs md:placeholder:text-base border-primary border-b border-t-0 border-r-0 border-l-0 shadow-md bg-white border
+        placeholder:font-normal placeholder:text-third text-third
     }
 
     .profile-label {
@@ -36,6 +50,38 @@
     }
 
     .checkout-container {
-        @apply border-b flex items-center  p-2 max-w-[120px] sm:min-w-[240px] md:h-[35px] md:rounded-lg h-[33px] rounded-md shadow-md border-primary
+        @apply border-b flex items-center bg-white  p-2 max-w-[120px] sm:min-w-[240px] md:h-[35px] md:rounded-lg h-[33px] rounded-md shadow-md border-primary
+    }
+
+    .payment-button {
+        @apply border flex p-[5px]  sm:p-2 text-[0.60rem] sm:text-sm rounded-lg transition duration-300 w-[120px] sm:w-[240px] 
+        sm:h-[35px] cursor-pointer shadow-md border-gray-200 bg-white
+    }
+
+    .payment-check {
+        @apply h-0 sm:h-6 transition duration-300 group-active:scale-125
+    }
+
+    .checkout-input {
+        @apply outline-none  placeholder:text-third text-xs md:text-sm bg-white
+    }
+
+    .input-error {
+        @apply text-xs md:text-sm text-red-600 
+    }
+
+    .checkout-buttonContainer {
+        @apply flex items-center sm:space-x-2
+    }
+
+    .checkout-information {
+      @apply text-xs md:text-sm
+    }
+
+    .hero-smallHeading {
+        @apply text-primary text-lg md:text-sm lg:text-2xl  font-semibold
+    }
+    .menu-link {
+        @apply text-white cursor-pointer hover:scale-125 duration-300 ease-out transition text-xl
     }
 }

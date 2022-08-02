@@ -5,9 +5,10 @@ import { useContext, useEffect, useState } from 'react'
 import { UserContext } from '../../lib/context'
 import { auth, db } from '../../lib/firebase'
 import { useForm } from 'react-hook-form'
-import { collection, doc, getDocs, query, updateDoc, where } from 'firebase/firestore'
+import { collection, doc, DocumentData, getDocs, query, updateDoc, where } from 'firebase/firestore'
 import { DotPulse } from '@uiball/loaders'
 import toast from 'react-hot-toast'
+import { useUserFirestoreData } from '../../lib/hooks'
 
 
 
@@ -24,26 +25,25 @@ type FormData = {
 const slug: NextPage = () => {
 
   // When user is editing his details the button to save the new details is shown
-  const [isEditing, setIsEditing] = useState<boolean>()
-  // Used in order to re-read the docs with actual real time data when the user has edited his profile information
-  const [hasEdited, setHasEdited] = useState<boolean>()
-  // Used to display delivery details like country, city and adress on UI
-  const [deliveryData, setDeliveryData] = useState<any>()
+  const [isEditing, setIsEditing] = useState<boolean>(false)
+
+  const [hasEdited, setHasEdited] = useState<boolean>(false)
+
   // If the user edited his details he'll be shown a loader until the data reaches the server
-  const [isLoading, setIsLoading] = useState<boolean>()
-  // Used to push the user to the homepage after he's signed out
+  const [isLoading, setIsLoading] = useState(false)
+  // Router used to push user
   const router = useRouter()
   const { slug } = router.query
   // Used to show the user details for his profile page
-  const user = useContext(UserContext)
+  const user = useUserFirestoreData()
   // Used to collect, validate and send data to the server
   const { register, formState: { errors }, handleSubmit, reset } = useForm<FormData>()
 
-  // If the user changes his profile data he'll be shown a loader and his data will be updated on the server with the new data
+  // To update user profile data
   const onSubmit = async (data: FormData) => {
-    // If he's submited the data he will be shown a loader
+    // If the user submited the data he will be shown a loader
     setIsLoading(true)
-    // Update the user doc with the new data
+    // Update the user doc with the new data and reset input field values
     await updateDoc(doc(db, "users", user?.uid), {
       deliveryAddress: data?.deliveryAddress,
       country: data?.country,
@@ -55,35 +55,10 @@ const slug: NextPage = () => {
       .then(() => setHasEdited(true))
       .then(() => reset({ deliveryAddress: "", city: "", country: "", phoneNumber: "" }))
 
+    // After user has edited his details throw a toast
     toast.success("You have edited your details!")
 
   }
-
-  // Read the doc with the user uid and store the data inside deliveryData so it can be used to
-  // be displayed on User Profile
-  const read = async (id: string) => {
-
-    // Ref to collection in database
-    const colRef = collection(db, "users")
-
-    // Used to loop through every doc and find the one that matches the signed in user
-    const q = query(colRef, where("uid", "==", `${id}`))
-
-    // Used to get all the docs with uid match
-    const querySnapshot = await getDocs(q);
-
-    // Loop through each available match and store it in deliveryData
-    querySnapshot.forEach((doc) => {
-      setDeliveryData(doc?.data())
-    })
-
-  }
-
-  // Everytime the user is read or the user has edited the data the doc
-  // will be read once again so real time data is displayed on UI
-  useEffect(() => {
-    read(user?.uid)
-  }, [user, hasEdited])
 
   // If the user signs out push him to homepage
   function handleSignOut() {
@@ -92,40 +67,43 @@ const slug: NextPage = () => {
     router.push("/")
   }
 
-  console.log(user?.username)
-  console.log(slug)
-
   return (
     <div>
-
+    {/* Show user profile to the user it belongs to otherwise throw him a warning that he cannot access it */}
       {user?.username === slug ? (
-        <div className="flex md:flex-row flex-col md:space-y-0 md:items-center md:justify-center md:h-[80vh] space-y-14 max-w-5xl md:mt-0 mt-20 mx-auto">
+        <div className="flex md:flex-row  flex-col md:space-y-0 md:items-center md:justify-center md:h-[80vh] space-y-14 max-w-5xl md:mt-0 mt-20 mx-auto">
           <div className="flex flex-col items-center space-y-6">
             <img className="h-48 md:h-56 " src="/user-image.png" />
-
+           
+           {/* Button to sign out from current account */}
             <button onClick={handleSignOut} className="signInButton hover:border border-gray-200 border: ;
       font-semibold hover:border-primary w-32">Sign Out</button>
           </div>
-
+          
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="flex space-x-5 sm:space-x-10 px-16  pb-10 md:pb-0 justify-around mx-auto ">
-              <div className="flex  flex-col">
-
+              <div className="flex flex-col">
+  
                 <label className="profile-label">Username</label>
                 <input className="profile-input"
                   disabled placeholder={`${user?.username}`} />
 
                 <label className="profile-label pt-4">Delivery Address</label>
-                <input {...register("deliveryAddress", { required: true, maxLength: { value: 30, message: "Delivery adress limit is 30 chars" } },)}
-                  className="profile-input  text-third font-md"
+                {/* Input to register and validate DELIVERY ADDRESS value */}
+                <input type="text" {...register("deliveryAddress", { required: true, maxLength: { value: 30, message: "Delivery adress limit is 30 chars" } },)}
+                  className="profile-input  "
                   onClick={() => setIsEditing(true)}
-                  placeholder={`${deliveryData?.deliveryAddress ? deliveryData?.deliveryAddress : "Enter a street"}`} />
+                  placeholder={`${user?.deliveryAddress ? user?.deliveryAddress : "Enter a street"}`} />
+
                 <label className="profile-label pt-4">Country</label>
-                <input {...register("country", { required: true, maxLength: { value: 15, message: "Country limit is 15 chars" } })}
-                  className="profile-input text-third font-md"
-                  placeholder={`${deliveryData?.country ? deliveryData?.country : "No country found"}`}
+                {/* Input to register and validate COUNTRY value */}
+                <input type="text" {...register("country", { required: true, maxLength: { value: 15, message: "Country limit is 15 chars" } })}
+                  className="profile-input "
+                  placeholder={`${user?.country ? user?.country : "No country found"}`}
                   onClick={() => setIsEditing(true)} />
 
+                 {/* When user is editing his profile data he'll be shown a save details button 
+                 and after clicking it he'll be shown a loader until the data is saved in db */}
                 {isEditing ? (
                   isLoading ?
                     <div className="mt-16">
@@ -139,29 +117,32 @@ const slug: NextPage = () => {
 
 
                 ) : (
-                  <label className="max-w-[180px] pt-7 text-xs md:text-sm text-third">You're part of Pawstore community since July 7h 2022</label>
+                  <h2 className="max-w-[180px] pt-7 text-xs md:text-sm text-third">You're part of Pawstore community since July 7h 2022</h2>
                 )}
 
               </div>
               <div className="flex  flex-col">
 
                 <label className="profile-label">City</label>
-                <input {...register("city", { required: true, maxLength: { value: 15, message: "City limit is 15 chars" } })}
-                  className="profile-input  text-third font-md"
-                  placeholder={`${deliveryData?.city ? deliveryData?.city : "ex: Timisoara"}`}
+                {/* Input to register and validate CITY value */}
+                <input type="text" {...register("city", { required: true, maxLength: { value: 15, message: "City limit is 15 chars" } })}
+                  className="profile-input  "
+                  placeholder={`${user?.city ? user?.city : "ex: Timisoara"}`}
                   onClick={() => setIsEditing(true)} />
 
                 <label className="profile-label pt-4">Phone Number</label>
-                <input {...register("phoneNumber", { required: true, maxLength: { value: 11, message: "Phone number limit is 11 chars" } })}
-                  className="profile-input text-third font-md"
+                {/* Input to register and validate PHONE NUMBER value */}
+                <input type="number" {...register("phoneNumber", { required: true, maxLength: { value: 11, message: "Phone number limit is 11 chars" } })}
+                  className="profile-input "
                   onClick={() => setIsEditing(true)}
-                  placeholder={`${deliveryData?.phoneNumber ? deliveryData?.phoneNumber : "Add a phone number"}`} />
+                  placeholder={`${user?.phoneNumber ? user?.phoneNumber : "Add a phone number"}`} />
 
                 <label className="profile-label pt-4">Email</label>
                 <input className="profile-input"
                   disabled placeholder={`${user?.email}`} />
 
-                <div className="flex pt-4 flex-col text-xs md:text-sm text-red-500">
+                {/* If user hasn't typed all the fields and respected constraint rules he'll be thrown the following errors */}
+                <div className="flex pt-4 flex-col input-error">
                   <p>{errors.deliveryAddress?.type === "required" ? "Delivery address is required" : errors.deliveryAddress?.message}</p>
                   <p>{errors.country?.type === "required" ? "Country is required" : errors.country?.message}</p>
                   <p>{errors.phoneNumber?.type === "required" ? "Phone number is required" : errors.phoneNumber?.message}</p>
@@ -172,9 +153,12 @@ const slug: NextPage = () => {
           </form>
         </div>
       )
-
-        : (
-          <h1 className="mainHeading flex items-center max-w-5xl text-center justify-center mx-auto h-[80vh] ">You cannot access other users profile</h1>
+      
+      : (
+        <>
+        {/* If the user is trying to acces other users profile show this */}
+        <h1 className="mainHeading flex items-center max-w-5xl text-center justify-center mx-auto h-[80vh] ">You cannot access other users profile</h1>
+        </>
         )}
 
     </div>

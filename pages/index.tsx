@@ -1,14 +1,19 @@
 import { doc, setDoc } from 'firebase/firestore'
 import type { NextPage } from 'next'
-import { useContext, useEffect } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import Hero from '../components/Hero'
 import { UserContext } from '../lib/context'
 import { db } from '../lib/firebase'
 
+
+
+
 const Home: NextPage = () => {
+  // Currently authenticacted user
   const user = useContext(UserContext)
-  console.log(user)
-  
+
+
+  // When user has logged in and thrown to homepage his details will be stored in the database
   useEffect(() => {
     if(user) {
         setDoc(doc(db, "users", user?.uid), {
@@ -24,8 +29,8 @@ const Home: NextPage = () => {
 
 
   return (
-    <div className="px-16">
-      
+    <div className="px-12">
+
       {/* Hero */}
       <Hero/>
 

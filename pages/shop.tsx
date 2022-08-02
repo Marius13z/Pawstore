@@ -6,11 +6,15 @@ import { auth, db } from "../lib/firebase"
 
 
 const shop:NextPage = () => {
+  // Currently authenticated user details
   const user = auth.currentUser
+  // Products to be shown on UI
   const [products, setProducts] = useState<DocumentData>()
 
+  // Collection reference to all the available products
   const colRef = collection(db, "products")
 
+  // Pull products data to display them on UI
   useEffect(() => {
     return onSnapshot(colRef, (snapshot) => setProducts(snapshot?.docs))
   }, [user])
@@ -24,6 +28,8 @@ const shop:NextPage = () => {
         </div>
         <div className={`grid  grid-flow-col grid-rows-12 md:grid-rows-6 xl:grid-rows-5
          mt-10 mb-16 justify-center gap-y-5 gap-x-5 lg:gap-x-10 lg:gap-y-10 px-16`}>
+
+          {/* Available products */}
        {products && products?.map((product:DocumentData) => (
         <Card image={product?.data().image}
          category={product?.data().category}

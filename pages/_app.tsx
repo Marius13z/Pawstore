@@ -11,24 +11,25 @@ import SearchTransition from '../components/SearchTransition'
 
 function MyApp({ Component, pageProps }: AppProps) {
   const userData = useUserData();
-  const [open, setOpen] = useState<boolean>(false)
-  const [openMenu, setOpenMenu] = useState<boolean>(false)
-  const [searchTerm, setSearchTerm] = useState<string>("")
-  const [closeSearch, setCloseSearch] = useState<boolean>(false)
+  const [open, setOpen] = useState(false)
+  const [openMenu, setOpenMenu] = useState(false)
+  const [searchTerm, setSearchTerm] = useState("")
+  const [closeSearch, setCloseSearch] = useState(false)
 
   return(
     <>
     <UserContext.Provider value={userData?.currentUser}>
+
     <SearchContext.Provider value={{ open, setOpen, openMenu, setOpenMenu, searchTerm, setSearchTerm, closeSearch, setCloseSearch }}>
      
+    <Head>
+      <title>Pawstore</title>
+      <link rel="icon" href="/header.png" />
+    </Head>
     <Header />
     <SearchTransition/>
     <Toaster/>
     <Component {...pageProps} />
-    <Head>
-      <title>Pawstore</title>
-      <link rel="icon" href="/truelog.jpg" />
-    </Head>
 
     </SearchContext.Provider>
 
