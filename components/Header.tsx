@@ -7,6 +7,7 @@ import { useContext, useEffect, useState } from 'react'
 import toast from 'react-hot-toast'
 import { SearchContext, UserContext } from '../lib/context'
 import { auth, db } from '../lib/firebase'
+import { useCartData } from '../lib/hooks'
 
 
 
@@ -14,21 +15,13 @@ const Header = () => {
   // To push users to other pages
   const router = useRouter()
   // Number of unique of products displayed above cart
-  const [productsNumber, setProductsNumber] = useState<number>()
+  const cartProducts = useCartData()
   // Active link based on where user has navigated - for example Treats page
   const [linkActive, setLinkActive] = useState<string>("treats")
   // Currently logged in user details
   const user = auth?.currentUser
   // Used to open a modal and display the search and other menu items
   const { open, setOpen, setSearchTerm, setCloseSearch } = useContext(SearchContext)
-  
-  // Collection reference to products in users cart
-  const colRef = collection(db, "users", `${user?.uid}`, "cart")
-
-  // Pull products data from cart collection
-  useEffect(() => {
-    return onSnapshot(colRef, (snapshot) => setProductsNumber(snapshot?.docs?.length))
-  }, [user])
 
   // User can acces his profile only if he's logged in
   function handleUserProfile() {
@@ -136,7 +129,7 @@ const Header = () => {
         {/* Number of unique products shown above cart icon */}
         <div className="absolute h-6 w-6 bottom-5 left-5
         border-4 border-white text-center text-[10px] text-white rounded-full bg-primary">
-         <span>{productsNumber || productsNumber! > 0 ? productsNumber : 0}</span>
+         <span>{cartProducts?.length}</span>
         </div>
 
         </div>

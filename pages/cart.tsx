@@ -1,8 +1,6 @@
-import { collection, DocumentData, onSnapshot } from "firebase/firestore"
+import { DocumentData } from "firebase/firestore"
 import { NextPage } from "next"
-import { useContext, useEffect, useState } from "react"
 import UserCart from "../components/UserCart"
-import { auth, db } from "../lib/firebase"
 import { ShoppingCartIcon } from "@heroicons/react/outline"
 import { useRouter } from "next/router"
 import { useCartData } from "../lib/hooks"
@@ -36,9 +34,9 @@ const cart:NextPage = () => {
         
     <div className="flex flex-col max-w-4xl mx-auto space-y-1 lg:items-start items-center">
   
-  <div className="flex justify-center pt-10 space-x-4 items-center">
-      <h1 className="font-semibold text-primary text-3xl"><span className="text-secondary">Your</span> cart</h1>
-      <ShoppingCartIcon className="text-primary h-6"/>
+  <div className="flex pt-10 items-center justify-center space-x-2 ">
+      <ShoppingCartIcon className="text-primary h-4 md:h-5 lg:h-6"/>
+      <span className="font-semibold text-primary md:text-xl lg:text-2xl">Cart</span>
   </div>
 
       
@@ -54,9 +52,8 @@ const cart:NextPage = () => {
       </div>
 
     {/* Order bill */}
-      <div className="sticky border-0  lg:w-[300px] pt-5 pb-5 sm:mr-16 lg:border-gray-200 lg:bottom-[300px]
-       lg:rounded-xl lg:shadow-lg lg:left-[1000px] bottom-0 flex bg-white 
-         sm:border-gray-200 items-center sm:border w-full flex-col mt-5 space-y-4">
+      <div className="sticky bottom-0 lg:w-[300px] pt-5 pb-5 sm:mr-16 lg:border lg:border-gray-200 lg:bottom-[300px]
+       lg:rounded-xl lg:shadow-lg lg:left-[1000px]  flex bg-body items-center w-full flex-col mt-5 space-y-4">
             <h3 className="font-semibold pb-2 pt-2 text-primary ">Your order summary</h3>
             <div className="flex w-56 justify-between">
                <p className="text-xs  text-primary ">Subtotal</p>
