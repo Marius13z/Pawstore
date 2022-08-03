@@ -63,7 +63,7 @@
     }
 
     .checkout-input {
-        @apply outline-none  placeholder:text-third text-xs md:text-sm bg-white
+        @apply outline-none w-24  placeholder:text-third text-xs md:text-sm bg-white
     }
 
     .input-error {

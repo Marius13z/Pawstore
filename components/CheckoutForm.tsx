@@ -229,7 +229,7 @@ const Checkout = ( {  setOrder }:Props ):JSX.Element => {
         transition duration-300 ease-out sm:space-y-1 sm:ml-8 border-gray-200 bg-white
         active:shadow-sm shadow-md cursor-pointer h-32 w-[120px] rounded-md sm:h-44 sm:w-[240px]  md:self-start
         ${address === "profileAddress" ? "text-secondary" : "text-third"}`}>
-         <p className="checkout-information">{user?.email}</p>
+         <p className="checkout-information pr-1">{user?.email}</p>
          <p className="checkout-information">{user?.phoneNumber}</p>
          <p className="checkout-information">{user?.deliveryAddress}</p>
          <p className="checkout-information">{user?.city}</p>
