@@ -1,3 +1,4 @@
+import { CashIcon, CreditCardIcon } from "@heroicons/react/outline"
 import { CheckCircleIcon } from "@heroicons/react/solid"
 import axios from "axios"
 import {  DocumentData } from "firebase/firestore"
@@ -105,10 +106,10 @@ const Checkout = ( {  setOrder }:Props ):JSX.Element => {
 
     <form onSubmit={handleSubmit(onSubmit)}>
 
-    <h1 className="text-primary text-sm md:text-3xl text-center mt-20">You can<span className="text-secondary"> choose</span> a new address or an existing one</h1>
+    <h1 className="text-primary text-xs font-medium sm:font-normal sm:text-lg md:text-3xl text-center mt-20">You can<span className="text-secondary"> choose</span> a new address or an existing one</h1>
 
 
- <div className="flex mt-10 mb-10 px-16 sm:space-x-20 space-x-10 justify-center  items-center">
+ <div className="flex flex-col sm:flex-row mt-10 mb-10 px-16 sm:space-x-20  justify-center  items-center">
 
    <div onClick={() => setAddress("new")} className="flex flex-col space-y-5 cursor-pointer">
 
@@ -223,11 +224,11 @@ const Checkout = ( {  setOrder }:Props ):JSX.Element => {
 
     
 
-   <div className="flex flex-col space-y-5 xl:space-y-6">
+   <div className="flex flex-col mt-8 sm:mt-0 space-y-5 xl:space-y-6">
         { /* User can choose the delivery address saved on his profile and highlight his choice */}
        <div onClick={() => setAddress("profileAddress")} className={`border p-2 overflow-hidden active:scale-90
-        transition duration-300 ease-out sm:space-y-1 sm:ml-8 border-gray-200 bg-white
-        active:shadow-sm shadow-md cursor-pointer h-32 w-[120px] rounded-md sm:h-44 sm:w-[240px]  md:self-start
+        transition duration-300 ease-out sm:space-y-1  border-gray-200 bg-white
+        active:shadow-sm shadow-md cursor-pointer h-32 w-[200px] rounded-md sm:h-44 sm:w-[240px]  md:self-start
         ${address === "profileAddress" ? "text-secondary" : "text-third"}`}>
          <p className="checkout-information pr-1">{user?.email}</p>
          <p className="checkout-information">{user?.phoneNumber}</p>
@@ -236,27 +237,28 @@ const Checkout = ( {  setOrder }:Props ):JSX.Element => {
          <p className="checkout-information">{user?.country}</p>
        </div>
 
- <div className="flex flex-col space-y-3 sm:space-y-4 justify-center items-center">
+ <div className="flex flex-col space-y-3 sm:space-y-4 md:justify-center md:items-center">
      {/* User can choose the payment method and highlight his choice */}
-     <div onClick={() => setPaymentMethod("card")} className="checkout-buttonContainer group">
+
       {/* Card payment method */}
-     <CheckCircleIcon className={`payment-check ${paymentMethod === "card" ? "text-secondary" : "opacity-0 text-third"}`}/>
-       <button type="button"
+       <button onClick={() => setPaymentMethod("card")} type="button"
         className={`payment-button ${paymentMethod === "card" ? "text-secondary" : "text-third "}`}>
-         Pay with card</button>
-      </div>
-      <div onClick={() => setPaymentMethod("cash")} className="checkout-buttonContainer group">
+         <CreditCardIcon className={` h-4 sm:h-5 pr-2
+         ${paymentMethod === "card" ? "text-secondary" : "text-third"}`}/>Pay with card</button>
+
+
         {/* Cash payment method */}
-     <CheckCircleIcon className={`payment-check ${paymentMethod === "cash" ? "text-secondary" : "opacity-0 text-third"}`}/>
-       <button type="button" className={`payment-button ${paymentMethod === "cash" ? "text-secondary" : "text-third"}`}>
-         Pay with cash</button>
-      </div>
+       <button onClick={() => setPaymentMethod("cash")} type="button" 
+       className={`payment-button ${paymentMethod === "cash" ? "text-secondary" : "text-third"}`}>
+       <CashIcon className={` h-4 sm:h-5 pr-2
+         ${paymentMethod === "cash" ? "text-secondary" : "text-third"}`}/>Pay with cash</button>
+
  </div>
       
       {/* Button used so the user can submit the form */}
-         <button type="submit" className="bg-primary hover:bg-secondary text-[0.60rem] w-[120px] sm:w-[240px]
-           rounded-md sm:text-sm shadow-md sm:ml-8 active:scale-90 active:shadow-sm duration-300 transition 
-           ease-out text-white p-[5px] md:p-2">Proceed to order</button>
+         <button type="submit" className="bg-primary hover:bg-secondary text-xs  w-[200px] sm:w-[240px]
+           rounded-md sm:text-sm shadow-md  active:scale-90 active:shadow-sm duration-300 transition 
+           ease-out text-white p-2">Proceed to order</button>
 
    </div>
 

@@ -50,11 +50,11 @@
     }
 
     .checkout-container {
-        @apply border-b flex items-center bg-white  p-2 max-w-[120px] sm:min-w-[240px] md:h-[35px] md:rounded-lg h-[33px] rounded-md shadow-md border-primary
+        @apply flex items-center
     }
 
     .payment-button {
-        @apply border flex p-[5px]  sm:p-2 text-[0.60rem] sm:text-sm rounded-lg transition duration-300 w-[120px] sm:w-[240px] 
+        @apply border flex p-2 text-xs sm:text-sm rounded-lg transition duration-300 w-[200px] sm:w-[240px] 
         sm:h-[35px] cursor-pointer shadow-md border-gray-200 bg-white
     }
 
@@ -63,7 +63,7 @@
     }
 
     .checkout-input {
-        @apply outline-none w-24  placeholder:text-third text-xs md:text-sm bg-white
+        @apply outline-none border-b placeholder:text-third text-xs md:text-sm bg-white  p-2 w-[200px] sm:min-w-[240px] md:h-[35px] md:rounded-lg h-[33px] rounded-md shadow-md border-primary
     }
 
     .input-error {
@@ -71,7 +71,7 @@
     }
 
     .checkout-buttonContainer {
-        @apply flex items-center sm:space-x-2
+        @apply flex
     }
 
     .checkout-information {
