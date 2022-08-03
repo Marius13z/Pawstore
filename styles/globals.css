@@ -78,6 +78,6 @@
         @apply text-primary text-lg md:text-sm lg:text-2xl  font-semibold
     }
     .menu-link {
-        @apply text-center text-white cursor-pointer hover:scale-125 duration-300 ease-out transition text-xl
+        @apply  text-white cursor-pointer  duration-300 ease-out transition text-xl hover:text-secondary
     }
 }

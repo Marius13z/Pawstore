@@ -1,5 +1,5 @@
 import { UsersIcon } from "@heroicons/react/outline"
-import { ChevronDoubleRightIcon, ChevronRightIcon } from "@heroicons/react/solid"
+import { ChevronRightIcon } from "@heroicons/react/solid"
 import { useRouter } from "next/router"
 import { auth } from "../lib/firebase"
 
@@ -9,7 +9,7 @@ const Hero = () => {
 
    function handlePushUser() {
     if(user) {
-      router.push("/contactus")
+      router.push("/contact")
     } else {
       router.push("/signin")
     }

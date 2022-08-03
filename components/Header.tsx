@@ -26,7 +26,7 @@ const Header = () => {
   // User can acces his profile only if he's logged in
   function handleUserProfile() {
     if(user) {
-      router.push(`/userprofile/${user?.displayName}`)
+      router.push(`/user`)
     } else {
       toast.error("You must login first!")
       router.push("/signin")
@@ -80,7 +80,7 @@ const Header = () => {
 
          {/* Link to Contact Page */}
         <li onClick={() => setLinkActive("contact")} >
-          <Link href="/contactus">
+          <Link href="/contact">
           <a>Contact Us</a>
           </Link>
         </li>

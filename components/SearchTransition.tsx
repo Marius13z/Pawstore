@@ -2,10 +2,11 @@ import { Dialog, Transition } from '@headlessui/react'
 import { SearchIcon, TrendingUpIcon } from '@heroicons/react/outline'
 import { ArrowRightIcon } from '@heroicons/react/solid'
 import { collection, DocumentData, onSnapshot } from 'firebase/firestore'
+import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { Fragment, useContext, useEffect, useState } from 'react'
-import { SearchContext, UserContext } from '../lib/context'
-import { auth, db } from '../lib/firebase'
+import { useContext, useEffect, useState } from 'react'
+import { SearchContext } from '../lib/context'
+import { db } from '../lib/firebase'
 
 
 const SearchTransition = () => {
@@ -15,7 +16,6 @@ const SearchTransition = () => {
  const [ products, setProducts ] = useState<DocumentData>()
  // Router used to push user to other pages
  const router = useRouter()
- const user = auth?.currentUser
 
  // Collection reference to all the available products
   const colRef = collection(db, "products")
@@ -65,21 +65,39 @@ const SearchTransition = () => {
              {closeSearch ? ( 
               <div className="flex flex-col relative h-[100vh] justify-center items-center md:hidden ">
                 {/* Menu Links to other pages */}
-                <ul className="space-y-5">
-
-                <li onClick={() => handleMenuPush("treats")} 
-                className="menu-link">Treats</li>
-                <li onClick={() => handleMenuPush("leash")} 
-                 className="menu-link ">Leash</li>
-                <li onClick={() => handleMenuPush("toys")} 
-                 className="menu-link ">Toys</li>
-                  <li onClick={() => handleMenuPush("cart")} 
-                  className="menu-link ">Cart</li>
-                  <li onClick={() => handleMenuPush(`userprofile/${user?.displayName}`)} 
-                  className="menu-link ">Profile</li>
+                <ul onClick={() => setOpen(false)} className="space-y-5 text-center">
+                
+                <li>
+                <Link href="/treats">
+                   <a className="menu-link">Treats</a>
+                  </Link>
+                </li>
+                <li>
+                <Link href="/leash">
+                   <a className="menu-link">Leash</a>
+                  </Link>
+                </li>
+                <li>
+                <Link href="/toys">
+                   <a className="menu-link">Toys</a>
+                  </Link>
+                </li>
+                  <li>
+                  <Link href="/cart">
+                   <a className="menu-link">Cart</a>
+                  </Link>
+                  </li>
+                  <li>
+                  <Link href="/user">
+                   <a className="menu-link">Profile</a>
+                  </Link>
+                  </li>
                 <div className="group">
-                <li onClick={() => handleMenuPush("contactus")} 
-                 className="menu-link ">Contact us</li>
+                <li>
+                <Link href="/contact">
+                   <a className="menu-link">Contact Us</a>
+                  </Link>
+                </li>
                 <ArrowRightIcon className="text-primary group-hover:-right-32 relative -top-5 -right-28  h-4" />
                 </div>
 
