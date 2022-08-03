@@ -11,7 +11,6 @@ import { useCartData } from "../lib/hooks"
 const cart:NextPage = () => {
    // Products shown on UI
    const products = useCartData()
-   console.log(products)
    // Router used to push user to other pages
    const router = useRouter()
 

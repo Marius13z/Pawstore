@@ -48,7 +48,7 @@ const SearchTransition = () => {
     <Transition.Root show={open}  >
       <Dialog as='div' className="fixed scrollbar-none z-20 inset-0 overflow-y-auto" onClose={setOpen} >
 
-       <div className="flex justify-center  min-h-[800px] text-center sm:block ">
+       <div className="flex justify-center   sm:block ">
          
        <Transition.Child
              enter="ease-out duration-300"
@@ -88,7 +88,7 @@ const SearchTransition = () => {
              ) : (
 
               <div className="flex grow  mt-10 w-screen justify-around md:justify-center">
-               <div className=" md:w-[136px]">
+               <div className=" md:w-[124px]">
 
                </div>
               

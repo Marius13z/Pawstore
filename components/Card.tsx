@@ -23,9 +23,9 @@ const Card: React.FC<Product> = ({ category, name, price, image, id }) => {
         {/* Products Image */}
        <img className="h-[70px] sm:h-[110px] md:h-[90px] lg:h-[140px] object-contain" src={image}/>
        {/* Products Name */}
-       <p className="font-medium text-[0.75rem] sm:text-xs pt-3 pb-3 w-[120px] sm:w-[180px] md:w-[150px] text-primary sm:font-bold text-center">{name}</p>
+       <p className="font-medium text-[0.75rem] text-xs pt-3 pb-3 w-[120px] sm:w-[180px] md:w-[150px] text-primary sm:font-bold text-center">{name}</p>
        {/* Products Price */}
-       <p className="text-primary text-xs sm:text-sm">Price: <span className="font-medium text-secondary">{price} EUR</span></p>
+       <p className="text-primary text-xs sm:text-sm pb-3">Price: <span className="font-medium text-secondary">{price} EUR</span></p>
     
 
       </div>

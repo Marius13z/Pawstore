@@ -2,11 +2,14 @@ import {  doc, DocumentData, writeBatch } from "firebase/firestore"
 import { auth, db } from "../lib/firebase"
 import { useCartData } from "../lib/hooks"
 import Confetti from 'react-dom-confetti'
+import Router, { useRouter } from "next/router"
+import Error404 from "../components/Error404"
 
 
 const success = () => {
    const cartProducts = useCartData()
    const user = auth.currentUser
+   const router = useRouter()
 
    // Delete cart after user has succeeded to pay 
     const deleteDocs = () => {
@@ -24,7 +27,10 @@ const success = () => {
     // will disappear
     if(cartProducts?.length > 0) {
         deleteDocs()
-    }
+        setTimeout(() => {
+          router.push("/")
+        }, 3000)
+    } 
  
     const config:any = {
         angle: "105",
@@ -40,14 +46,16 @@ const success = () => {
         colors: ["#422C4F", "#EBA25D", "#61E3F1", "#fdff6a"]
       };
 
-  return (
-    <div className="flex justify-center items-center mt-32">
-        <div className="bg-white border border-gray-200 shadow-sm rounded-lg p-6 ">
-        <h1 className="text-secondary font-medium text-sm md:text-2xl ">Successfuly paid for products!</h1>
-        <Confetti active={cartProducts?.length > 0} config={config}/>
 
-        </div>
-    </div>
+  return (
+   
+      <div className="flex justify-center items-center mt-32">
+          <div className="bg-white border border-gray-200 shadow-sm rounded-lg p-6 ">
+          <h1 className="text-secondary font-medium text-sm md:text-2xl ">Thanks for buying from us!</h1>
+          <Confetti active={cartProducts?.length > 0} config={config}/>
+          </div>
+      </div>
+
   )
 }
 

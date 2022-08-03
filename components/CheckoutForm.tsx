@@ -1,11 +1,13 @@
 import { CheckCircleIcon } from "@heroicons/react/solid"
 import axios from "axios"
 import {  DocumentData } from "firebase/firestore"
+import Router, { useRouter } from "next/router"
 import { Dispatch, SetStateAction, useState } from "react"
 import { useForm } from "react-hook-form"
 import toast from "react-hot-toast"
 import getStripe from '../lib/getStripe'
 import { useCartData, useUserFirestoreData } from "../lib/hooks"
+import Error404 from "./Error404"
 
 
 interface Props {
@@ -34,7 +36,6 @@ const Checkout = ( {  setOrder }:Props ):JSX.Element => {
     const cartProducts = useCartData()
     // Hook to register a new address values, handle validation and errors
     const { register, formState: { errors }, handleSubmit } = useForm<FormData>()
-
     // Store all products so the fetch works otherwise it returns undefined
      const productsInCart = cartProducts?.map((product:DocumentData) => {
       return {
@@ -95,7 +96,12 @@ const Checkout = ( {  setOrder }:Props ):JSX.Element => {
     }
 
 
+
   return (
+    <>
+    {cartProducts?.length > 0 ? (
+
+
     <form onSubmit={handleSubmit(onSubmit)}>
 
     <h1 className="text-primary text-lg md:text-3xl text-center mt-20">You can<span className="text-secondary"> choose</span> a new address or an existing one</h1>
@@ -236,7 +242,7 @@ const Checkout = ( {  setOrder }:Props ):JSX.Element => {
      <CheckCircleIcon className={`payment-check ${paymentMethod === "card" ? "text-secondary" : "opacity-0 text-third"}`}/>
        <button type="button"
         className={`payment-button ${paymentMethod === "card" ? "text-secondary" : "text-third "}`}>
-         Pay with Visa/Mastercard</button>
+         Pay with card</button>
       </div>
       <div onClick={() => setPaymentMethod("cash")} className="checkout-buttonContainer group">
         {/* Cash payment method */}
@@ -255,6 +261,11 @@ const Checkout = ( {  setOrder }:Props ):JSX.Element => {
 
  </div>
    </form>
+
+    ) : (
+      <Error404/>
+    )}
+   </>
   )
 }
 

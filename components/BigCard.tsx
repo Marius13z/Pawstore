@@ -21,13 +21,13 @@ const BigCard:React.FC<Props> = ({image, id, description, price, name}) => {
     // Debouncer to avoid users spamming the add to cart button
     const [debouncer, setDebouncer] = useState<boolean>(false)
     // Current user details
-    const user = useContext(UserContext)
+    const user = auth.currentUser
+
     // Reference to user collection
     const colRef = collection(db, "users")
     // Reference to doc products from cart
     const docRef = doc(colRef, `${user?.uid}`, "cart", `${id}`)
-    // Used to check if user is logged in or not
-    const checkUser = auth.currentUser
+
     
     
     // Get real time snapshot of the quantity of a product in user cart
@@ -66,9 +66,9 @@ const BigCard:React.FC<Props> = ({image, id, description, price, name}) => {
         
         // If the user is logged in and has added a product to cart a toast will be shown
         // otherwise a toast error will be shown
-        if(checkUser) {
+        if(user) {
           toast.success("You have added one product in cart!")
-        } else if (!checkUser) {
+        } else if (!user) {
           toast.error("You must login first!")
         }
         }
@@ -94,13 +94,13 @@ const BigCard:React.FC<Props> = ({image, id, description, price, name}) => {
         {/* Product description */}
         <p className="text-xs lg:text-base max-w-[300px] md:max-w-[500px] text-third">{description}</p>
         {/* Product price */}
-        <p className="text-sm font-medium lg:text-base pt-3">Price starts at 
-        <span className="text-sm lg:text-base font-bold text-secondary"> {price} EUR</span></p>
+        <p className="text-sm text-primary font-medium lg:text-base pt-3">Price starts at 
+        <span className="font-bold text-secondary"> {price} EUR</span></p>
 
        <div className="pb-5 flex space-x-3 pt-3">
         {/* Button to add product to cart, if the user isn't logged in he won't be able to buy
         AND the button will be disabled for a second after being user*/}
-       <button type="button" onClick={addProperToCart} disabled={!checkUser || debouncer === true} className="accentButton w-36">Add to cart</button>
+       <button type="button" onClick={addProperToCart} disabled={!user || debouncer === true} className="accentButton w-36">Add to cart</button>
        </div>
        
      </div>

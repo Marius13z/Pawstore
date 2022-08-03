@@ -9,6 +9,7 @@ import { collection, doc, DocumentData, getDocs, query, updateDoc, where } from 
 import { DotPulse } from '@uiball/loaders'
 import toast from 'react-hot-toast'
 import { useUserFirestoreData } from '../../lib/hooks'
+import Error404 from '../../components/Error404'
 
 
 
@@ -27,10 +28,6 @@ const slug: NextPage = () => {
   // When user is editing his details the button to save the new details is shown
   const [isEditing, setIsEditing] = useState<boolean>(false)
 
-  const [hasEdited, setHasEdited] = useState<boolean>(false)
-
-  // If the user edited his details he'll be shown a loader until the data reaches the server
-  const [isLoading, setIsLoading] = useState(false)
   // Router used to push user
   const router = useRouter()
   const { slug } = router.query
@@ -41,8 +38,6 @@ const slug: NextPage = () => {
 
   // To update user profile data
   const onSubmit = async (data: FormData) => {
-    // If the user submited the data he will be shown a loader
-    setIsLoading(true)
     // Update the user doc with the new data and reset input field values
     await updateDoc(doc(db, "users", user?.uid), {
       deliveryAddress: data?.deliveryAddress,
@@ -51,8 +46,6 @@ const slug: NextPage = () => {
       phoneNumber: data?.phoneNumber
     })
       .then(() => setIsEditing(false))
-      .then(() => setIsLoading(false))
-      .then(() => setHasEdited(true))
       .then(() => reset({ deliveryAddress: "", city: "", country: "", phoneNumber: "" }))
 
     // After user has edited his details throw a toast
@@ -76,8 +69,8 @@ const slug: NextPage = () => {
             <img className="h-48 md:h-56 " src="/user-image.png" />
            
            {/* Button to sign out from current account */}
-            <button onClick={handleSignOut} className="signInButton hover:border border-gray-200 border: ;
-      font-semibold hover:border-primary w-32">Sign Out</button>
+            <button onClick={handleSignOut} className="signInButton border border-gray-200 
+      font-semibold hover:border-primary bg-white w-32">Sign Out</button>
           </div>
           
           <form onSubmit={handleSubmit(onSubmit)}>
@@ -85,7 +78,7 @@ const slug: NextPage = () => {
               <div className="flex flex-col">
   
                 <label className="profile-label">Username</label>
-                <input className="profile-input"
+                <input className="profile-input bg-white"
                   disabled placeholder={`${user?.username}`} />
 
                 <label className="profile-label pt-4">Delivery Address</label>
@@ -105,15 +98,10 @@ const slug: NextPage = () => {
                  {/* When user is editing his profile data he'll be shown a save details button 
                  and after clicking it he'll be shown a loader until the data is saved in db */}
                 {isEditing ? (
-                  isLoading ?
-                    <div className="mt-16">
-                      <DotPulse color="#EBA25D" size={40} />
-                    </div>
-                    :
 
-                    <button onClick={() => setHasEdited(false)}
+                    <button
                       type="submit"
-                      className="accentButton font-sm bg-white text-white mt-7">Save Details</button>
+                      className="accentButton font-sm  text-white mt-7">Save Details</button>
 
 
                 ) : (
@@ -157,7 +145,7 @@ const slug: NextPage = () => {
       : (
         <>
         {/* If the user is trying to acces other users profile show this */}
-        <h1 className="mainHeading flex items-center max-w-5xl text-center justify-center mx-auto h-[80vh] ">You cannot access other users profile</h1>
+        <Error404/>
         </>
         )}
 

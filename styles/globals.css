@@ -26,7 +26,7 @@
     }
     .primaryButton {
         @apply bg-white text-primary hover:border-primary p-1 border rounded-lg text-xs font-semibold shadow-md
-        w-32 h-9 transition-all duration-300 ease-out
+        w-32 h-9 transition-all duration-300 ease-out border-gray-200
     }
     .accentButton {
         @apply bg-secondary rounded-lg font-semibold w-32 h-9  shadow-md text-xs
@@ -38,7 +38,7 @@
 
     .profile-input {
         @apply w-36 sm:w-48 sm:h-12 outline-none rounded-lg sm:rounded-md p-2 placeholder:text-xs md:placeholder:text-base border-primary border-b border-t-0 border-r-0 border-l-0 shadow-md bg-white border
-        placeholder:font-normal placeholder:text-third text-third
+        placeholder:font-normal placeholder:text-third text-third 
     }
 
     .profile-label {

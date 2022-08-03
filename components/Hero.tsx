@@ -37,7 +37,7 @@ const Hero = () => {
           him to the sign in page */}
           <button type="button" onClick={handlePushUser} className="primaryButton">
             {!user ? (<span className="inline-block"><UsersIcon className="h-3.5 pr-1 inline-block"/> Sign In</span>) : 
-            (<span className="inline-block">Get in touch <ChevronRightIcon className="h-4 inline-block pb-0.5"/></span>)}
+            (<span className="inline-block">Get in touch</span>)}
             </button>
             
         </div>
