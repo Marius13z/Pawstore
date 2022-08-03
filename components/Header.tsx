@@ -52,7 +52,8 @@ const Header = () => {
     <nav className="relative scrollbar-hide  flex justify-between py-5 px-3 md:px-16 items-center">
 
       {/* Left */}
-      <div onClick={() => router.push("/")} className=" flex items-center space-x-1 cursor-pointer">
+      <div onClick={() => router.push("/")} className={`items-center space-x-1 cursor-pointer 
+      ${open ? "hidden md:flex" : "flex"}`}>
 
        <img  className="object-contain h-8 w-8" src="/header.png"/>
        <p className="text-logo font-semibold pl-1 font-sans">Pawstore</p>   
