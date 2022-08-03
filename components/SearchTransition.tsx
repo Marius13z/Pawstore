@@ -46,7 +46,7 @@ const SearchTransition = () => {
 
   return (
     <Transition.Root show={open}  >
-      <Dialog as='div' className="fixed z-20 inset-0 overflow-y-auto" onClose={setOpen} >
+      <Dialog as='div' className="fixed scrollbar-none z-20 inset-0 overflow-y-auto" onClose={setOpen} >
 
        <div className="flex justify-center  min-h-[800px] text-center sm:block ">
          
