@@ -105,7 +105,7 @@ const Checkout = ( {  setOrder }:Props ):JSX.Element => {
 
     <form onSubmit={handleSubmit(onSubmit)}>
 
-    <h1 className="text-primary text-lg md:text-3xl text-center mt-20">You can<span className="text-secondary"> choose</span> a new address or an existing one</h1>
+    <h1 className="text-primary text-sm md:text-3xl text-center mt-20">You can<span className="text-secondary"> choose</span> a new address or an existing one</h1>
 
 
  <div className="flex mt-10 mb-10 px-16 sm:space-x-20 space-x-10 justify-center  items-center">
