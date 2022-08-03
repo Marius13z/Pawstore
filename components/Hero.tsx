@@ -36,8 +36,8 @@ const Hero = () => {
           {/* User will acces a page with a contact form he's logged in, otherwise the button will redirect
           him to the sign in page */}
           <button type="button" onClick={handlePushUser} className="primaryButton">
-            {!user ? (<span className="inline-block"><UsersIcon className="h-3.5 pr-1 inline-block"/> Sign In</span>) : 
-            (<span className="inline-block">Get in touch</span>)}
+            {user ?  (<span className="inline-block">Get in touch <ChevronRightIcon className="h-4 inline-block pb-0.5"/></span>) : 
+            (<span className="inline-block"><UsersIcon className="h-4 pr-1 inline-block"/> Sign In</span>)}
             </button>
             
         </div>

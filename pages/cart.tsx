@@ -52,7 +52,7 @@ const cart:NextPage = () => {
       </div>
 
     {/* Order bill */}
-      <div className="sticky bottom-0 lg:w-[300px] pt-5 pb-5 sm:mr-16 lg:border lg:border-gray-200 lg:bottom-[300px]
+      <div className="sticky bottom-0 lg:w-[300px] pt-5 pb-5 sm:mr-16 lg:border lg:border-gray-200 lg:bottom-[340px]
        lg:rounded-xl lg:shadow-lg lg:left-[1000px]  flex bg-body items-center w-full flex-col mt-5 space-y-4">
             <h3 className="font-semibold pb-2 pt-2 text-primary ">Your order summary</h3>
             <div className="flex w-56 justify-between">
