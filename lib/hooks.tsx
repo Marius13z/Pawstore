@@ -34,7 +34,7 @@ export const useUserData = () => {
 export const useCartData = () => {
 
   const [ cartProducts, setCartProducts ] = useState<DocumentData>()
-
+  
   const user = auth?.currentUser
 
   const colRef = collection(db, "users", `${user?.uid}`, "cart")
@@ -49,7 +49,6 @@ export const useCartData = () => {
 
 export const useUserFirestoreData = () => {
     const [userDetails, setUserDetails] = useState<DocumentData>()
-
     const user = auth?.currentUser
 
      // Doc reference to pull user details from his profile    

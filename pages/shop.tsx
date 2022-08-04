@@ -20,13 +20,13 @@ const shop:NextPage = () => {
   }, [user])
 
   return (
-        <>
-        <div className="flex  flex-col items-center mt-20 px-16 space-y-7 justify-center">
+        <main>
+        <section className="flex  flex-col items-center mt-20 px-16 space-y-7 justify-center">
         <h1 className="text-2xl md:text-3xl lg:text-4xl text-center text-primary font-bold">One toy, treat or walk can make him happy</h1>
         <hr className="h-[2px] bg-primary min-w-[200px] md:min-w-[400px] lg:min-w-[500px] shadow-md " />
 
-        </div>
-        <div className={`grid  grid-flow-col grid-rows-12 md:grid-rows-6 xl:grid-rows-5
+        </section>
+        <section className={`grid grid-flow-col grid-rows-12 md:grid-rows-6 xl:grid-rows-5
          mt-10 mb-16 justify-center gap-y-5 gap-x-5 lg:gap-x-10 lg:gap-y-10 px-16`}>
 
           {/* Available products */}
@@ -39,9 +39,9 @@ const shop:NextPage = () => {
          price={product?.data().price}
          />
        ))}
-       </div>
+       </section>
         
-        </>
+        </main>
   )
 }
 

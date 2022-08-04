@@ -23,7 +23,7 @@ const Product = () => {
 
 
   return (
-    <div className="min-h-[80vh] mt-10 flex md:px-16 md:items-center">
+    <main className="min-h-[80vh] mt-10 flex md:px-16 md:items-center">
       {/* Card used to show a specific product */}
         <BigCard image={product?.data().image} 
         key={product?.id} 
@@ -31,7 +31,7 @@ const Product = () => {
         description={product?.data().description} 
         name={product?.data().name} 
         price={product?.data().price}/>
-    </div>
+    </main>
   )
 }
 

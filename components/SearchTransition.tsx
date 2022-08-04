@@ -63,50 +63,42 @@ const SearchTransition = () => {
              {/* When the modal is open and the user doesn't search for a product
              on small screens he will see the menu with other links like Treats or Toys */}
              {closeSearch ? ( 
-              <div className="flex flex-col relative h-[100vh] justify-center items-center md:hidden ">
+              <nav className="flex flex-col relative h-[100vh] justify-center items-center md:hidden ">
                 {/* Menu Links to other pages */}
                 <ul onClick={() => setOpen(false)} className="space-y-5 text-center">
                 
                 <li>
-                <Link href="/treats">
-                   <a className="menu-link">Treats</a>
-                  </Link>
+                <Link href="/treats"><a className="menu-link">Treats</a></Link>
                 </li>
+
                 <li>
-                <Link href="/leash">
-                   <a className="menu-link">Leash</a>
-                  </Link>
+                <Link href="/leash"><a className="menu-link">Leash</a></Link>
                 </li>
+
                 <li>
-                <Link href="/toys">
-                   <a className="menu-link">Toys</a>
-                  </Link>
+                <Link href="/toys"><a className="menu-link">Toys</a></Link>
                 </li>
+
                   <li>
-                  <Link href="/cart">
-                   <a className="menu-link">Cart</a>
-                  </Link>
+                  <Link href="/cart"><a className="menu-link">Cart</a></Link>
                   </li>
+
                   <li>
-                  <Link href="/user">
-                   <a className="menu-link">Profile</a>
-                  </Link>
+                  <Link href="/user"><a className="menu-link">Profile</a></Link>
                   </li>
-                <div className="group">
+
+
                 <li>
-                <Link href="/contact">
-                   <a className="menu-link">Contact Us</a>
-                  </Link>
+                <Link href="/contact"><a className="menu-link">Contact Us</a></Link>
                 </li>
-                <ArrowRightIcon className="text-primary group-hover:-right-32 relative -top-5 -right-28  h-4" />
-                </div>
+              
 
                 </ul>
-              </div>
+              </nav>
              ) : (
 
-              <div className="flex grow  mt-10 w-screen justify-around md:justify-center">
-               <div className=" md:w-[124px]">
+              <main className="flex grow  mt-10 w-screen justify-around md:justify-center">
+               <div className=" md:w-[90px]">
 
                </div>
               
@@ -153,7 +145,7 @@ const SearchTransition = () => {
 
                      </div>
 
-              </div>
+              </main>
              )}
 
 

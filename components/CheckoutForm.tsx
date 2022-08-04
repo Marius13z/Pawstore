@@ -111,12 +111,11 @@ const Checkout = ( {  setOrder }:Props ):JSX.Element => {
 
  <div className="flex flex-col sm:flex-row mt-10 mb-10 px-16 sm:space-x-20  justify-center  items-center">
 
-   <div onClick={() => setAddress("new")} className="flex flex-col space-y-5 cursor-pointer">
+   <ul onClick={() => setAddress("new")} className="flex flex-col space-y-5 cursor-pointer">
 
-   <div className="space-y-1">
+   <li className="space-y-1">
 
    <label className="checkout-label">E-mail</label>
-   <div className="checkout-container">
 
     {/* The user must complete the form only in the constraints 
     imposed by the maximum number of characters only if the he has chosen a new delivery address */}
@@ -128,17 +127,16 @@ const Checkout = ( {  setOrder }:Props ):JSX.Element => {
    className={` checkout-input
    ${address === "new" ? " placeholder:text-secondary text-secondary" : "text-primary placeholder:text-third"}`} 
    placeholder="abcde@gmail.com"/>
-   </div>
    {address === "new" && <p className="input-error">{errors.city?.type === "required" ? "Email is required" : errors.email?.message}</p>}
+   </li>
 
 
-   </div>
 
-   <div className="space-y-1">
+
+   <li className="space-y-1">
 
    <label className="checkout-label">Phone Number</label>
 
-   <div className="checkout-container">
 
     {/* The user must complete the form only in the constraints 
     imposed by the maximum number of characters only if the he has chosen a new delivery address */}
@@ -150,17 +148,15 @@ const Checkout = ( {  setOrder }:Props ):JSX.Element => {
       className={` checkout-input
    ${address === "new" ? " placeholder:text-secondary text-secondary" : "text-primary placeholder:text-third"}`} 
    placeholder="+0743825731"/>
-   </div>
+
    {address === "new" && <p className="input-error">{errors.phoneNumber?.type === "required" ? "Phone number is required" : errors.phoneNumber?.message}</p>}
+   </li>
    
 
-   </div>
 
-   <div className="space-y-1">
+   <li className="space-y-1">
 
    <label className="checkout-label">Country</label>
-
-   <div className="checkout-container">
 
     {/* The user must complete the form only in the constraints 
     imposed by the maximum number of characters only if the he has chosen a new delivery address */}
@@ -172,16 +168,15 @@ const Checkout = ( {  setOrder }:Props ):JSX.Element => {
     className={` checkout-input
    ${address === "new" ? " placeholder:text-secondary text-secondary" : "text-primary placeholder:text-third"}`} 
    placeholder="ex: Romania"/>
-   </div>
+
    {address === "new" &&  <p className="input-error">{errors.country?.type === "required" ? "Country is required" : errors.country?.message}</p>}
+   </li>
 
-   </div>
+  
 
-   <div className="space-y-1">
+   <li className="space-y-1">
 
    <label className="checkout-label">City</label>
-
-   <div className="checkout-container">
 
     {/* The user must complete the form only in the constraints 
     imposed by the maximum number of characters only if the he has chosen a new delivery address */}
@@ -192,17 +187,16 @@ const Checkout = ( {  setOrder }:Props ):JSX.Element => {
     className={` checkout-input
     ${address === "new" ? " placeholder:text-secondary text-secondary" : "text-primary placeholder:text-third"}`} 
      placeholder="Timisoara"/>
-   </div>
+
    {address === "new" && <p className="input-error">{errors.city?.type === "required" ? "City is required" : errors.city?.message}</p>}
 
+   </li>
 
-   </div>
-
-   <div className="space-y-1">
+   <li className="space-y-1">
 
    <label className="checkout-label">Delivery Address</label>
 
-   <div className="checkout-container">
+ 
 
     {/* The user must complete the form only in the constraints 
     imposed by the maximum number of characters only if the he has chosen a new delivery address */}
@@ -211,31 +205,30 @@ const Checkout = ( {  setOrder }:Props ):JSX.Element => {
    { required: true, 
     disabled: address === "profileAddress" && true, 
     maxLength: { value: 30, message: "Delivery adress limit is 30 chars" } },)}
-    className={`checkout-input
+    className={`checkout-input 
     ${address === "new" ? " placeholder:text-secondary text-secondary" : "text-primary placeholder:text-third"}`} 
     placeholder="Street"/>
-   </div>
    {address === "new" && <p className="input-error">{errors.deliveryAddress?.type === "required" ? "Delivery address is required" : errors.deliveryAddress?.message}</p>}
+   </li>
    
 
-   </div>
-
-   </div>
+  
+   </ul>
 
     
 
    <div className="flex flex-col mt-8 sm:mt-0 space-y-5 xl:space-y-6">
         { /* User can choose the delivery address saved on his profile and highlight his choice */}
-       <div onClick={() => setAddress("profileAddress")} className={`border p-2 overflow-hidden active:scale-90
+       <ul onClick={() => setAddress("profileAddress")} className={`border p-2 overflow-hidden active:scale-90
         transition duration-300 ease-out sm:space-y-1  border-gray-200 bg-white
         active:shadow-sm shadow-md cursor-pointer h-32 w-[200px] rounded-md sm:h-44 sm:w-[240px]  md:self-start
         ${address === "profileAddress" ? "text-secondary" : "text-third"}`}>
-         <p className="checkout-information pr-1">{user?.email}</p>
-         <p className="checkout-information">{user?.phoneNumber}</p>
-         <p className="checkout-information">{user?.deliveryAddress}</p>
-         <p className="checkout-information">{user?.city}</p>
-         <p className="checkout-information">{user?.country}</p>
-       </div>
+         <li className="checkout-information lir-1">{user?.email}</li>
+         <li className="checkout-information">{user?.lihoneNumber}</li>
+         <li className="checkout-information">{user?.deliveryAddress}</li>
+         <li className="checkout-information">{user?.city}</li>
+         <li className="checkout-information">{user?.country}</li>
+       </ul>
 
  <div className="flex flex-col space-y-3 sm:space-y-4 md:justify-center md:items-center">
      {/* User can choose the payment method and highlight his choice */}

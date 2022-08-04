@@ -16,7 +16,7 @@ if(user) {
 
 
   return (
-    <div className="px-16 flex flex-col md:flex-row-reverse items-center md:mt-20 justify-center mt-10">
+    <main className="px-16 flex flex-col md:flex-row-reverse items-center md:mt-20 justify-center mt-10">
         <div className="flex-col flex justify-center pl-6 items-center space-y-6">
       <h1 className="text-xl text-primary font-semibold pb-2">Sign in with</h1>
       {/* Facebook sign in button */}
@@ -40,7 +40,7 @@ if(user) {
        <img src="signin.webp"/>
        <hr className="hidden lg:block w-[1.5px] bg-third h-[360px]"/>
         </div>
-    </div>
+    </main>
   )
 }
 

@@ -38,7 +38,7 @@
 
     .profile-input {
         @apply w-36 sm:w-48 sm:h-12 outline-none rounded-lg sm:rounded-md p-2 placeholder:text-xs md:placeholder:text-base border-primary border-b border-t-0 border-r-0 border-l-0 shadow-md bg-white border
-        placeholder:font-normal placeholder:text-third text-third 
+        placeholder:font-normal placeholder:text-third text-third block
     }
 
     .profile-label {
@@ -49,9 +49,7 @@
         @apply text-xs sm:text-sm text-primary
     }
 
-    .checkout-container {
-        @apply flex items-center
-    }
+ 
 
     .payment-button {
         @apply border flex p-2 text-xs sm:text-sm rounded-lg transition duration-300 w-[200px] sm:w-[240px] 
@@ -63,7 +61,7 @@
     }
 
     .checkout-input {
-        @apply outline-none border-b placeholder:text-third text-xs md:text-sm bg-white  p-2 w-[200px] sm:min-w-[240px] md:h-[35px] md:rounded-lg h-[33px] rounded-md shadow-md border-primary
+        @apply outline-none border-b block placeholder:text-third text-xs md:text-sm bg-white  p-2 w-[200px] sm:min-w-[240px] md:h-[35px] md:rounded-lg h-[33px] rounded-md shadow-md border-primary
     }
 
     .input-error {
@@ -78,6 +76,6 @@
         @apply text-primary text-lg md:text-sm lg:text-2xl  font-semibold
     }
     .menu-link {
-        @apply  text-white cursor-pointer  duration-300 ease-out transition text-xl hover:text-secondary
+        @apply  text-white cursor-pointer  duration-300 ease-out transition text-xl hover:text-primary
     }
 }

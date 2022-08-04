@@ -21,23 +21,23 @@ const cart:NextPage = () => {
 
    
   return (
-   <div>
+   <main>
       {/* If the user doesn't have any products show him an empty cart
       otherwise show him his cart products and bill
       */}
      {products?.length === 0 ? (
-        <div className="flex flex-col h-[80vh] space-y-2 justify-center items-center">
+        <section className="flex flex-col h-[80vh] space-y-2 justify-center items-center">
         <h1 className=" text-center text-secondary text-3xl md:text-4xl">Your cart is empty!</h1>
-      </div>
+        </section>
      ) : (
         <>
         
-    <div className="flex flex-col max-w-4xl mx-auto space-y-1 lg:items-start items-center">
+    <section className="flex flex-col max-w-4xl mx-auto space-y-1 lg:items-start items-center">
   
-  <div className="flex pt-10 items-center justify-center space-x-2 ">
+    <div className="flex pt-10 items-center justify-center space-x-2 ">
       <ShoppingCartIcon className="text-primary h-4 md:h-5 lg:h-6"/>
       <span className="font-semibold text-primary md:text-xl lg:text-2xl">Cart</span>
-  </div>
+     </div>
 
       
     {/* Cart products */}
@@ -49,10 +49,10 @@ const cart:NextPage = () => {
    quantity={product?.quantity}
    name={product?.name}/>     
      ))} 
-      </div>
+      </section>
 
     {/* Order bill */}
-      <div className="sticky bottom-0 lg:w-[300px] pt-5 pb-5 sm:mr-16 lg:border lg:border-gray-200 lg:bottom-[340px]
+      <section className="sticky bottom-0 lg:w-[300px] pt-5 pb-5 sm:mr-16 lg:border lg:border-gray-200 lg:bottom-[340px]
        lg:rounded-xl lg:shadow-lg lg:left-[1000px]  flex bg-body items-center w-full flex-col mt-5 space-y-4">
             <h3 className="font-semibold pb-2 pt-2 text-primary ">Your order summary</h3>
             <div className="flex w-56 justify-between">
@@ -75,10 +75,10 @@ const cart:NextPage = () => {
             transition duration-300 active:scale-90 border-secondary border 
              hover:border-primary hover:text-primary text-secondary">Proceed to checkout</button>
             </div>
-        </div>
+        </section>
         </>
      )}
-   </div>
+   </main>
 
       
   )

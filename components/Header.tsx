@@ -45,13 +45,23 @@ const Header = () => {
     <nav className="relative scrollbar-hide  flex justify-between py-5 px-3 md:px-16 items-center">
 
       {/* Left */}
-      <div onClick={() => router.push("/")} className={`items-center space-x-1 cursor-pointer 
+      <ul>
+
+      <li>
+        <Link href="/">
+        
+        <button type="button" className={`items-center space-x-1 cursor-pointer 
       ${open ? "hidden md:flex" : "flex"}`}>
 
        <img  className="object-contain h-8 w-8" src="/header.png"/>
-       <p className="text-logo font-semibold pl-1 font-sans">Pawstore</p>   
+       <span className="text-logo font-semibold pl-1 font-sans">Pawstore</span>   
 
-    </div> 
+        </button>
+        </Link>
+
+    </li> 
+
+      </ul>
 
       {/* Middle */}
        <ul className={`group relative space-x-10 justify-center font-sans   text-primary text-xs cursor-pointer
@@ -96,18 +106,20 @@ const Header = () => {
        </ul>
 
       {/* Right */}
-      <div className={`flex space-x-4 ${open && "grow justify-center"}`}>
+      <ul className={`flex space-x-4 ${open && "grow justify-center"}`}>
 
         {/* Menu icon for phone screens */}
-        <div onClick={() => setOpen(true)} className={`navBtn bg-white  md:hidden ${open ? "hidden" : "block"}`}>
-        <MenuAlt2Icon className="h-5 text-primary"/>
-        </div>
+        <li onClick={() => setOpen(true)}>
+          <button type="button" className={`navBtn bg-white  md:hidden ${open ? "hidden" : "block"}`}>
+            <MenuAlt2Icon className="h-5 text-primary"/>
+          </button>
+        </li>
 
         {/* When clicked user will open a modal through which he can access the search function */}
-        <div onClick={() => setOpen(true)}  
+        <li onClick={() => setOpen(true)}  
         className={`navBtn active:transform-none bg-white relative z-30 md:flex 
         ${open ? "flex grow items-center justify-between max-w-[250px] md:max-w-lg lg:max-w-xl" : "hidden"}`}>
-
+         
         {/* Input that's going to be shown only if user has clicked the menu button or search button */}
         <input onChange={event => setSearchTerm(event.target.value)}
          className={`text-sm outline-none p-1 grow text-primary placeholder:text-third 
@@ -119,27 +131,30 @@ const Header = () => {
         {/* User can click the icon and restart the input, this way he can see the menu items like other links */}
         <XCircleIcon onClick={handleCloseSearch} className={`h-5 md:h-6 text-primary absolute -right-6 md:-right-10 hover:rotate-90 transition duration-300 
         ${ open ? "block" : "hidden"}`}/>
-        </div>
+        </li>
       
         {/* Cart item that's going to be removed if the user has clicked the search icon */}
-        <div onClick={() => router.push(`/cart`)} 
-        className={`navBtn relative border-secondary bg-secondary ${open ? "hidden" : "flex"}`}>
-        <ShoppingCartIcon className="text-primary h-5 p-[2px]"/>
-
+        <li>
+          <Link href="/cart">
+          <button type="button" className={`navBtn relative border-secondary bg-secondary ${open ? "hidden" : "flex"}`}>
+           <ShoppingCartIcon className="text-primary h-5 p-[2px]"/>
         {/* Number of unique products shown above cart icon */}
-        <div className="absolute h-6 w-6 bottom-5 left-5
-        border-4 border-white text-center text-[10px] text-white rounded-full bg-primary">
-         <span>{cartProducts?.length}</span>
-        </div>
-
-        </div>
+           <span className="absolute h-6 w-6 bottom-5 left-5
+        border-4 border-white text-center text-[10px] text-white rounded-full bg-primary">{cartProducts?.length}</span>
+            </button>               
+          </Link>
+        </li>
 
         {/* Icon to redirect user to his profile page */}
-        <div onClick={handleUserProfile} className={`navBtn bg-white ${open ? "hidden" : "flex"}`}>
-        <UserIcon className="h-5 text-primary"/>
-        </div>
+        <li>
+          <Link href="/user">
+           <button type="button" className={`navBtn bg-white ${open ? "hidden" : "flex"}`}>
+             <UserIcon className="h-5 text-primary"/>
+           </button>
+          </Link>
+        </li>
 
-        </div>
+        </ul>
     </nav>
 
     </>

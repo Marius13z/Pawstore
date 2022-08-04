@@ -37,17 +37,17 @@ const UserCart:React.FC<Props> = ({ image, name, price, id, quantity }) => {
             <img onClick={() => router.push(`/treats/${id}`)} className="object-contain cursor-pointer 
             h-[80px] w-[80px] sm:h-[100px] sm:w-[130px]  lg:h-[130px] lg:w-[200px] p-1" src={image}/>
 
-            <div className="flex flex-col pl-3 md:pl-0 lg:pl-4 space-y-2">
+            <ul className="flex flex-col pl-3 md:pl-0 lg:pl-4 space-y-2">
               {/* Product name */}
-              <h2 className="font-bold text-[0.65rem] sm:text-sm lg:text-base w-32 sm:w-56 text-primary">{name}</h2>
+              <li className="font-bold text-[0.65rem] sm:text-sm lg:text-base w-32 sm:w-56 text-primary">{name}</li>
               
               {/* Quantity and price block */}
-              <div className="flex space-x-5 ">
+              <li className="flex space-x-5 ">
                   <p className="text-xs sm:text-sm font-medium text-primary">Price: <span className="text-secondary">{price} EUR</span></p>
                   <p className="text-xs sm:text-sm font-medium text-primary">Quantity: <span className="">{quantity}</span></p>
-              </div>
+              </li>
 
-            </div>
+            </ul>
 
             {/* Button to delete products from cart */}
             <button type="button" onClick={deleteProductFromCart}>

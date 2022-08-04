@@ -2,8 +2,8 @@ import {  doc, DocumentData, writeBatch } from "firebase/firestore"
 import { auth, db } from "../lib/firebase"
 import { useCartData } from "../lib/hooks"
 import Confetti from 'react-dom-confetti'
-import Router, { useRouter } from "next/router"
-import Error404 from "../components/Error404"
+import { useRouter } from "next/router"
+
 
 
 const success = () => {
@@ -12,13 +12,13 @@ const success = () => {
    const router = useRouter()
 
    // Delete cart after user has succeeded to pay 
-    const deleteDocs = () => {
+    const deleteDocs = async () => {
       const docId = cartProducts?.map((document:DocumentData) => document?.id)
       const batch = writeBatch(db)
       docId?.forEach((id:DocumentData) => {
         batch.delete(doc(db, "users", `${user?.uid}`, "cart", `${id}`))
      })
-     batch.commit()
+     await batch.commit()
      console.log("batch removed")
     }
 
@@ -26,7 +26,7 @@ const success = () => {
     // if he still has more than one product in the cart the products 
     // will disappear
     if(cartProducts?.length > 0) {
-        deleteDocs()
+         deleteDocs()
         setTimeout(() => {
           router.push("/")
         }, 3000)
@@ -49,12 +49,12 @@ const success = () => {
 
   return (
    
-      <div className="flex justify-center items-center mt-32">
-          <div className="bg-white border border-gray-200 shadow-sm rounded-lg p-6 ">
+      <main className="flex justify-center items-center mt-32">
+          <section className="bg-white border border-gray-200 shadow-sm rounded-lg p-6 ">
           <h1 className="text-secondary font-medium text-sm md:text-2xl ">Thanks for buying from us!</h1>
           <Confetti active={cartProducts?.length > 0} config={config}/>
-          </div>
-      </div>
+          </section>
+      </main>
 
   )
 }

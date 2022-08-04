@@ -22,7 +22,6 @@ const BigCard:React.FC<Props> = ({image, id, description, price, name}) => {
     const [debouncer, setDebouncer] = useState<boolean>(false)
     // Current user details
     const user = auth.currentUser
-
     // Reference to user collection
     const colRef = collection(db, "users")
     // Reference to doc products from cart
@@ -75,27 +74,37 @@ const BigCard:React.FC<Props> = ({image, id, description, price, name}) => {
     
 
   return (
-    <div className="flex flex-col items-center md:justify-center flex-grow md:flex-row md:space-y-0 md:space-x-24 space-y-12">
+    <section className="flex flex-col items-center md:justify-center flex-grow md:flex-row md:space-y-0 md:space-x-24 space-y-12">
 
-    <div className="cursor-pointer relative border bg-white border-gray-200 shadow-lg 
-    min-w-[300px] min-h-[290px] max-w-[300px] max-h-[290px]
-     md:min-w-[330px] md:min-h-[320px] md:max-w-[330px] md:max-h-[320px] rounded-md">
+    <div className="relative">
         {/* Product image */}
-       <img className="z-10 relative object-fit w-[298px] h-[288px]  md:w-[348px] md:h-[318px] 
+       <img className="z-10 relative object-fit min-w-[300px] min-h-[290px] max-w-[300px] max-h-[290px]
+     md:min-w-[330px] md:min-h-[320px] md:max-w-[330px] md:max-h-[320px] shadow-lg
         rounded-md" src={image}/>
        <div className="bg-primary transition duration-350 top-0
-        absolute blur-sm opacity-70 w-[300px] h-[290px] md:w-[330px] md:h-[320px] rounded-md "></div>
+        absolute blur-sm opacity-70 w-[300px] h-[290px] md:w-[330px] md:h-[320px] "></div>
      </div>
 
-     <div className="flex-col space-y-2">
+     <ul className="flex-col space-y-2">
+        <li>
         {/* Product name */}
-        <p className="font-semibold text-md text-center md:text-xl lg:text-2xl text-primary">{name}</p>
-        <hr className=" h-[2px] md:h-[3px] bg-primary"/>
+          <p className="font-semibold text-md text-center md:text-xl lg:text-2xl text-primary">{name}</p>
+        </li>
+
+        <li>
+          <hr className=" h-[2px] md:h-[3px] bg-primary"/>
+        </li>
+
+        <li>
         {/* Product description */}
-        <p className="text-xs lg:text-base max-w-[300px] md:max-w-[500px] text-third">{description}</p>
+          <p className="text-xs lg:text-base max-w-[300px] md:max-w-[500px] text-third">{description}</p>
+        </li>
+
+        <li>
         {/* Product price */}
         <p className="text-sm text-primary font-medium lg:text-base pt-3">Price starts at 
         <span className="font-bold text-secondary"> {price} EUR</span></p>
+        </li>
 
        <div className="pb-5 flex space-x-3 pt-3">
         {/* Button to add product to cart, if the user isn't logged in he won't be able to buy
@@ -103,9 +112,9 @@ const BigCard:React.FC<Props> = ({image, id, description, price, name}) => {
        <button type="button" onClick={addProperToCart} disabled={!user || debouncer === true} className="accentButton w-36">Add to cart</button>
        </div>
        
-     </div>
+     </ul>
 
-    </div>
+    </section>
   )
 }
 

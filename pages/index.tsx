@@ -29,12 +29,9 @@ const Home: NextPage = () => {
 
 
   return (
-    <div className="px-12">
 
-      {/* Hero */}
       <Hero/>
 
-    </div>
   )
 }
 

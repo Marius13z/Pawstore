@@ -8,14 +8,14 @@ interface Props {
 }
 
 const Products:React.FC<Props> = ({ category }) => {
-  // Used state to store product and be able to display it on UI
+  // Products that will be displayed on UI
   const [products, setProducts] = useState<DocumentData>()
-  // Reference to collection where we pull data from
+  // Reference to collection with all products available
   const colRef = collection(db, "products")
-  // Query search through collection to find the products that are toy
+  // Query search through collection to find the products that are of category toy
   const q = query(colRef, where("category", "==", `${category}`) )
 
-  // Search for the products and return those that are part of treat category
+  // Pull data for products that are of a specific category
   useEffect(() => {
     return onSnapshot(q, (snapshot) => {
       setProducts(snapshot?.docs)
@@ -24,13 +24,14 @@ const Products:React.FC<Props> = ({ category }) => {
 
 
 
-
-  return (<div className="flex justify-center min-h-[70vh] space-x-5 sm:space-x-10
-   mt-10 mb-10 lg:mb-20 lg:mt-20 items-center">
+  return (
     
-    <div className="grid grid-flow-row md:grid-flow-col gap-y-5 gap-x-5 lg:gap-y-7 lg:gap-x-7 xl:gap-x-9 xl:gap-y-9  md:grid-rows-2 grid-cols-2 ">
+    <main className="grid grid-flow-col grid-rows-4 md:grid-rows-2
+    mt-20 mb-16 justify-center gap-y-5 gap-x-5 lg:gap-x-10 lg:gap-y-10 px-10 ">
+      {/* All products available displayed on UI */}
       {products && products?.map((product: DocumentData) => {
-        return(<Card 
+        return(
+        <Card 
         category={product?.data().category} 
         name={product?.data().name}
         key={product?.id} 
@@ -39,11 +40,11 @@ const Products:React.FC<Props> = ({ category }) => {
         image={product?.data()?.image} />)
       }
         )}
-    </div>
+    </main>
   
    
     
-  </div>
+  
       
   )
 }
