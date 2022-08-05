@@ -7,23 +7,16 @@ import { useRouter } from 'next/router'
 import { useContext, useEffect, useState } from 'react'
 import { SearchContext } from '../lib/context'
 import { db } from '../lib/firebase'
+import { useProducts } from '../lib/hooks'
 
 
 const SearchTransition = () => {
  // Consuming global states so the user can access search, close the search and search products
  const { open, setOpen, searchTerm, closeSearch, setCloseSearch} = useContext(SearchContext)
  // Available products to search in the search bar
- const [ products, setProducts ] = useState<DocumentData>()
+ const products = useProducts()
  // Router used to push user to other pages
  const router = useRouter()
-
- // Collection reference to all the available products
-  const colRef = collection(db, "products")
-
-// Pull all available products from database
- useEffect(() => {
-   return onSnapshot(colRef, (snapshot) => setProducts(snapshot?.docs))
- }, [])
 
  // User can access every product he searches for with a click
  // AND the modal with search bar will close when reaching that page
@@ -32,12 +25,6 @@ const SearchTransition = () => {
      router?.push(`/${category}/${id}`)
   }
 
-  // User will be pushed to a page when menu is open and he clicks on one 
-  // AND the modal with search bar will close when reaching that page
-  const handleMenuPush = (category: string) => {
-    setOpen(false)
-    router?.push(`/${category}`)
-  }
 
   // If the user is searching then the search bar will keep being open
   if(searchTerm !== "") {

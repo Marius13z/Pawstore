@@ -56,7 +56,22 @@ export const useUserFirestoreData = () => {
      // Pull user details from his profile for his profileAddress delivery address and phone number
    useEffect(() => {
      return onSnapshot(docRef, (snapshot) => setUserDetails(snapshot?.data()))
-   }, [user])
+   }, [db])
 
    return userDetails;
+}
+
+export const useProducts = () => {
+    // Products to be shown on UI
+    const [products, setProducts] = useState<DocumentData>()
+
+    // Collection reference to all the available products
+    const colRef = collection(db, "products")
+  
+    // Pull products data to display them on UI
+    useEffect(() => {
+      return onSnapshot(colRef, (snapshot) => setProducts(snapshot?.docs))
+    }, [])
+
+    return products;
 }

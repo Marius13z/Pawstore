@@ -3,21 +3,12 @@ import { NextPage } from "next"
 import { useEffect, useState } from "react"
 import Card from "../components/Card"
 import { auth, db } from "../lib/firebase"
+import { useProducts } from "../lib/hooks"
 
 
 const shop:NextPage = () => {
-  // Currently authenticated user details
-  const user = auth.currentUser
   // Products to be shown on UI
-  const [products, setProducts] = useState<DocumentData>()
-
-  // Collection reference to all the available products
-  const colRef = collection(db, "products")
-
-  // Pull products data to display them on UI
-  useEffect(() => {
-    return onSnapshot(colRef, (snapshot) => setProducts(snapshot?.docs))
-  }, [user])
+  const products = useProducts()
 
   return (
         <main>
