@@ -2,32 +2,26 @@ import { MenuAlt2Icon, ShoppingCartIcon, UserIcon } from '@heroicons/react/outli
 import { HeartIcon, SearchIcon, XCircleIcon } from '@heroicons/react/solid'
 import { collection, onSnapshot } from 'firebase/firestore'
 import Link from 'next/link'
-import { useRouter, } from 'next/router'
-import { useContext, useEffect, useState } from 'react'
-import toast from 'react-hot-toast'
-import { SearchContext, UserContext } from '../lib/context'
-import { auth, db } from '../lib/firebase'
+import React, { useContext, useEffect, useRef, useState } from 'react'
+import { SearchContext } from '../lib/context'
 import { useCartData } from '../lib/hooks'
 
 
 
 const Header = () => {
-  // To push users to other pages
-  const router = useRouter()
   // Number of unique of products displayed above cart
   const cartProducts = useCartData()
   // Active link based on where user has navigated - for example Treats page
   const [linkActive, setLinkActive] = useState<string>("treats")
-  // Currently logged in user details
-  const user = auth?.currentUser
   // Used to open a modal and display the search and other menu items
   const { open, setOpen, setSearchTerm, setCloseSearch } = useContext(SearchContext)
 
-  // If user presses X button then he cancels search and restarts his input
-  const handleCloseSearch = () => {
-      setSearchTerm("")
-      setCloseSearch(true)
+
+  const handleSearch = (event: React.FormEvent<HTMLInputElement>) => {
+    setCloseSearch(false)
+    setSearchTerm(event.currentTarget.value)
   }
+  
 
 
   return (
@@ -111,7 +105,7 @@ const Header = () => {
         ${open ? "flex grow items-center justify-between max-w-[250px] md:max-w-lg lg:max-w-xl" : "hidden"}`}>
          
         {/* Input that's going to be shown only if user has clicked the menu button or search button */}
-        <input onChange={event => setSearchTerm(event.target.value)}
+        <input onChange={handleSearch}
          className={`text-sm outline-none p-1 grow text-primary placeholder:text-third 
          ${open ? "block" : "hidden"}`}
         placeholder="Search here..."
@@ -119,8 +113,8 @@ const Header = () => {
 
         <SearchIcon className={`text-primary ${open ? "h-6" : "h-5"}`}/>
         {/* User can click the icon and restart the input, this way he can see the menu items like other links */}
-        <XCircleIcon onClick={handleCloseSearch} className={`h-5 md:h-6 text-primary absolute -right-6 md:-right-10 hover:rotate-90 transition duration-300 
-        ${ open ? "block" : "hidden"}`}/>
+        <XCircleIcon onClick={() => setCloseSearch(true)} className={`h-5 text-primary absolute -right-6 hover:rotate-90 transition duration-300 
+        ${ open ? "block md:hidden" : "hidden"}`}/>
         </li>
       
         {/* Cart item that's going to be removed if the user has clicked the search icon */}
