@@ -251,7 +251,7 @@ const Checkout = ( {  setOrder }:Props ):JSX.Element => {
       {/* Button used so the user can submit the form */}
          <button type="submit" className="bg-primary hover:bg-secondary text-xs  w-[200px] sm:w-[240px]
            rounded-md sm:text-sm shadow-md  active:scale-90 active:shadow-sm duration-300 transition 
-           ease-out text-white p-2">Proceed to order</button>
+           ease-out text-white p-2">Order now</button>
 
    </div>
 
