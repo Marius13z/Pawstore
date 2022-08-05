@@ -1,12 +1,10 @@
 import { Dialog, Transition } from '@headlessui/react'
 import { SearchIcon, TrendingUpIcon } from '@heroicons/react/outline'
-import { ArrowRightIcon } from '@heroicons/react/solid'
-import { collection, DocumentData, onSnapshot } from 'firebase/firestore'
+import {  DocumentData } from 'firebase/firestore'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { useContext, useEffect, useState } from 'react'
+import { useContext } from 'react'
 import { SearchContext } from '../lib/context'
-import { db } from '../lib/firebase'
 import { useProducts } from '../lib/hooks'
 
 
@@ -26,10 +24,6 @@ const SearchTransition = () => {
   }
 
 
-  // If the user is searching then the search bar will keep being open
-  if(searchTerm !== "") {
-    setCloseSearch(false)
-  }
 
   return (
     <Transition.Root show={open}  >
@@ -89,9 +83,8 @@ const SearchTransition = () => {
 
                </div>
               
-              <div className="flex mr-5 ml-5 md:ml-0 md:mr-0 grow md:grow-0 w-[240px] md:w-[512px] lg:w-[576px] shadow-lg rounded-xl  bg-white
-                transform transition-all mt-10
-                ">
+              <div className={`flex mr-5 ml-5 md:ml-0 md:mr-0 grow md:grow-0 w-[240px] md:w-[512px] lg:w-[576px] shadow-lg rounded-xl  bg-white
+                transform transition-all mt-10`}>
 
               <div className="text-center cursor-pointer pl-3 pr-3 overflow-hidden mt-3 mb-2">
                 {/* Every product name the user can search and access in the search bar */}
@@ -104,7 +97,7 @@ const SearchTransition = () => {
                  products available that he's searching for */}
                  } else if (val?.data().name.toLowerCase().includes(searchTerm.toLowerCase())) {
                    return val;
-                 }
+                 } 
                  {/* Products the user has searched for displayed on UI */}
               }).map((product:DocumentData) => {
                           return <Dialog.Title onClick={() => handleSearchPush(product?.data().category, product?.id)} 
