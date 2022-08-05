@@ -4,6 +4,7 @@ import UserCart from "../components/UserCart"
 import { ShoppingCartIcon } from "@heroicons/react/outline"
 import { useRouter } from "next/router"
 import { useCartData } from "../lib/hooks"
+import AuthCheck from "../components/AuthCheck"
 
 
 const cart:NextPage = () => {
@@ -21,6 +22,8 @@ const cart:NextPage = () => {
 
    
   return (
+   <AuthCheck>
+
    <main>
       {/* If the user doesn't have any products show him an empty cart
       otherwise show him his cart products and bill
@@ -79,6 +82,7 @@ const cart:NextPage = () => {
         </>
      )}
    </main>
+   </AuthCheck>
 
       
   )

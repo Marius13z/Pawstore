@@ -109,7 +109,7 @@ const BigCard:React.FC<Props> = ({image, id, description, price, name}) => {
        <div className="pb-5 flex space-x-3 pt-3">
         {/* Button to add product to cart, if the user isn't logged in he won't be able to buy
         AND the button will be disabled for a second after being user*/}
-       <button type="button" onClick={addProperToCart} disabled={!user || debouncer === true} className="accentButton w-36">Add to cart</button>
+       <button type="button" onClick={addProperToCart} disabled={!user || debouncer === true} className="btn-accent w-36">Add to cart</button>
        </div>
        
      </ul>

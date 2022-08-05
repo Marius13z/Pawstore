@@ -11,15 +11,14 @@ interface User {
 
 // Watch for user change so new users can be logged in to database in order to interact with the site
 export const useUserData = () => {
-
     const [ currentUser, setCurrentUser] = useState<User>() 
 
     useEffect(() => {
         return onAuthStateChanged(auth, (user) => {
             if (user) {
-              const username = user.displayName
-              const email = user.email
-              const uid = user.uid
+              const username = user?.displayName
+              const email = user?.email
+              const uid = user?.uid
               setCurrentUser({ username, email, uid })
             } else {
               return null;
@@ -49,7 +48,7 @@ export const useCartData = () => {
 
 export const useUserFirestoreData = () => {
     const [userDetails, setUserDetails] = useState<DocumentData>()
-    const user = auth?.currentUser
+    const user = auth.currentUser
 
      // Doc reference to pull user details from his profile    
      const docRef = doc(db, "users", `${user?.uid}`)

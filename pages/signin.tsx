@@ -20,17 +20,17 @@ if(user) {
         <div className="flex-col flex justify-center pl-6 items-center space-y-6">
       <h1 className="text-xl text-primary font-semibold pb-2">Sign in with</h1>
       {/* Facebook sign in button */}
-      <button type="button" onClick={() => signInWithPopup(auth, facebookProvider)} className="signInButton bg-fourth text-white">
+      <button type="button" onClick={() => signInWithPopup(auth, facebookProvider)} className="btn-signIn bg-fourth text-white">
         <img  className="h-6" src="/fb-icon.png"/>
          Facebook
       </button>
       {/* Github sign in button */}
-      <button type="button" onClick={() => signInWithPopup(auth, githubProvider)} className="signInButton bg-white text-black border border-black">
+      <button type="button" onClick={() => signInWithPopup(auth, githubProvider)} className="btn-signIn bg-white text-black border border-black">
         <img  className="h-4 pr-2" src="/github-icon.png"/>
          Github
       </button>
       {/* Google sign in button */}
-      <button type="button" onClick={() => signInWithPopup(auth, googleProvider)} className="signInButton bg-white text-fifth border border-fifth">
+      <button type="button" onClick={() => signInWithPopup(auth, googleProvider)} className="btn-signIn bg-white text-fifth border border-fifth">
         <img  className="h-4 pr-3" src="/google-logo.png"/>
          Google
       </button>

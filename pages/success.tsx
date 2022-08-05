@@ -3,6 +3,8 @@ import { auth, db } from "../lib/firebase"
 import { useCartData } from "../lib/hooks"
 import Confetti from 'react-dom-confetti'
 import { useRouter } from "next/router"
+import Error404 from "../components/Error404"
+import AuthCheck from "../components/AuthCheck"
 
 
 
@@ -48,13 +50,17 @@ const success = () => {
 
 
   return (
-   
-      <main className="flex justify-center items-center mt-32">
-          <section className="bg-white border border-gray-200 shadow-sm rounded-lg p-6 ">
-          <h1 className="text-secondary font-medium text-sm md:text-2xl ">Thanks for buying from us!</h1>
-          <Confetti active={cartProducts?.length > 0} config={config}/>
-          </section>
-      </main>
+
+    <AuthCheck>
+
+    <main className="flex justify-center items-center mt-32">
+        <section className="bg-white border border-gray-200 shadow-sm rounded-lg p-6 ">
+        <h1 className="text-secondary font-medium text-sm md:text-2xl ">Thanks for buying from us!</h1>
+        <Confetti active={cartProducts?.length > 0} config={config}/>
+        </section>
+    </main>
+
+    </AuthCheck>
 
   )
 }

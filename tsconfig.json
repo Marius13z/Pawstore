@@ -23,8 +23,8 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "lib/hooks.js"
-  ],
+    "lib/hooks.tsx"
+, "components/stripe.js"  ],
   "exclude": [
     "node_modules"
   ]

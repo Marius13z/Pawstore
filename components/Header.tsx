@@ -23,16 +23,6 @@ const Header = () => {
   // Used to open a modal and display the search and other menu items
   const { open, setOpen, setSearchTerm, setCloseSearch } = useContext(SearchContext)
 
-  // User can acces his profile only if he's logged in
-  function handleUserProfile() {
-    if(user) {
-      router.push(`/user`)
-    } else {
-      toast.error("You must login first!")
-      router.push("/signin")
-    }
-}
-
   // If user presses X button then he cancels search and restarts his input
   const handleCloseSearch = () => {
       setSearchTerm("")
@@ -110,14 +100,14 @@ const Header = () => {
 
         {/* Menu icon for phone screens */}
         <li onClick={() => setOpen(true)}>
-          <button type="button" className={`navBtn bg-white  md:hidden ${open ? "hidden" : "block"}`}>
+          <button type="button" className={`btn-nav bg-white  md:hidden ${open ? "hidden" : "block"}`}>
             <MenuAlt2Icon className="h-5 text-primary"/>
           </button>
         </li>
 
         {/* When clicked user will open a modal through which he can access the search function */}
         <li onClick={() => setOpen(true)}  
-        className={`navBtn active:transform-none bg-white relative z-30 md:flex 
+        className={`btn-nav active:transform-none bg-white relative z-30 md:flex 
         ${open ? "flex grow items-center justify-between max-w-[250px] md:max-w-lg lg:max-w-xl" : "hidden"}`}>
          
         {/* Input that's going to be shown only if user has clicked the menu button or search button */}
@@ -136,7 +126,7 @@ const Header = () => {
         {/* Cart item that's going to be removed if the user has clicked the search icon */}
         <li>
           <Link href="/cart">
-          <button type="button" className={`navBtn relative border-secondary bg-secondary ${open ? "hidden" : "flex"}`}>
+          <button type="button" className={`btn-nav relative border-secondary bg-secondary ${open ? "hidden" : "flex"}`}>
            <ShoppingCartIcon className="text-primary h-5 p-[2px]"/>
         {/* Number of unique products shown above cart icon */}
            <span className="absolute h-6 w-6 bottom-5 left-5
@@ -148,7 +138,7 @@ const Header = () => {
         {/* Icon to redirect user to his profile page */}
         <li>
           <Link href="/user">
-           <button type="button" className={`navBtn bg-white ${open ? "hidden" : "flex"}`}>
+           <button type="button" className={`btn-nav bg-white ${open ? "hidden" : "flex"}`}>
              <UserIcon className="h-5 text-primary"/>
            </button>
           </Link>

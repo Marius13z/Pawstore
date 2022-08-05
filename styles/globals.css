@@ -17,25 +17,22 @@
   }
 
 @layer components {
-    .navBtn {
+    .btn-nav {
         @apply border rounded-lg border-primary p-1 shadow-md active:scale-90 cursor-pointer transition duration-100 ease-out;
     }
-    .heroItems {
-        @apply absolute rounded-full w-[80px] md:h-[100px] md:w-[100px] h-[80px] object-contain
-        rotate-12 bg-white p-5 
-    }
-    .primaryButton {
+    .btn-primary {
         @apply bg-white text-primary hover:border-primary p-1 border rounded-lg text-xs font-semibold shadow-md
         w-32 h-9 transition-all duration-300 ease-out border-gray-200
     }
-    .accentButton {
+    .btn-accent {
         @apply bg-secondary rounded-lg font-semibold w-32 h-9  shadow-md text-xs
         transition-all text-white hover:bg-primary duration-300 ease-out 
     }
-    .signInButton {
+
+    .btn-signIn {
         @apply flex  text-primary w-52 justify-center h-9 items-center rounded-md  text-xs shadow-md hover:shadow-sm transition duration-300 ease-out
     }
-
+    
     .profile-input {
         @apply w-36 sm:w-48 sm:h-12 outline-none rounded-lg sm:rounded-md p-2 placeholder:text-xs md:placeholder:text-base border-primary border-b border-t-0 border-r-0 border-l-0 shadow-md bg-white border
         placeholder:font-normal placeholder:text-third text-third block
@@ -48,8 +45,6 @@
     .checkout-label {
         @apply text-xs sm:text-sm text-primary
     }
-
- 
 
     .payment-button {
         @apply border flex p-2 text-xs sm:text-sm rounded-lg transition duration-300 w-[200px] sm:w-[240px] 
@@ -72,9 +67,18 @@
       @apply text-xs md:text-sm
     }
 
-    .hero-smallHeading {
+    .about-heading {
         @apply text-primary text-lg md:text-sm lg:text-2xl  font-semibold
     }
+
+    .about-container {
+       @apply flex flex-col text-center space-y-2
+    }
+
+    .about-paragraph {
+        @apply text-xs text-primary xl:text-sm
+    }
+
     .menu-link {
         @apply  text-white cursor-pointer  duration-300 ease-out transition text-xl hover:text-primary
     }

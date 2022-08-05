@@ -1,6 +1,7 @@
 import { NextPage } from "next"
 import { useRouter } from "next/router"
 import { useState } from "react"
+import AuthCheck from "../components/AuthCheck"
 import CheckoutForm from "../components/CheckoutForm"
 
 
@@ -14,13 +15,13 @@ const checkout:NextPage = () => {
   }
 
   return (
-    <div>
-      
-        <CheckoutForm  
-        setOrder={setOrder}
-        />
-     
-    </div>
+    <AuthCheck>
+
+      <CheckoutForm  
+      setOrder={setOrder}
+      />
+    </AuthCheck>
+
   )
 }
 

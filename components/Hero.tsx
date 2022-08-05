@@ -27,14 +27,14 @@ const Hero = () => {
           {/* User can access a page with all available products */}
           <li>
            <Link href="/shop">
-          <button type="button" className="accentButton text-white">Shop Now</button>
+          <button type="button" className="btn-accent text-white">Shop Now</button>
            </Link>
           </li>
           {/* User will acces a page with a contact form he's logged in, otherwise the button will redirect
           him to the sign in page */}
           <li>
            <Link href={user ? "/contact" : "/signin"}>
-          <button type="button" className="primaryButton">
+          <button type="button" className="btn-primary">
             {user ?  (<span className="inline-block">Get in touch <ChevronRightIcon className="h-4 inline-block pb-0.5"/></span>) : 
             (<span className="inline-block"><UsersIcon className="h-4 pr-1 inline-block"/> Sign In</span>)}
             </button>
@@ -47,20 +47,20 @@ const Hero = () => {
 
     <ul className="flex justify-around md:justify-between md:max-w-[240px] lg:max-w-[320px] pt-12 pb-12 md:pb-0">
 
-            <li className="flex flex-col text-center space-y-2">
-               <h2 className="hero-smallHeading">85K<span className="text-secondary font-bold">+</span></h2>
-               <p className="text-xs xl:text-sm ">Happy clients</p>
+            <li className="about-container">
+               <h2 className="about-heading">85K<span className="text-secondary font-bold">+</span></h2>
+               <p className="about-paragraph">Happy clients</p>
             </li>
 
-            <li className="flex flex-col text-center space-y-2">
-               <h2 className="hero-smallHeading">99<span className="text-secondary font-bold">%</span></h2>
-               <p className="text-xs xl:text-sm">Protection</p>
+            <li className="about-container">
+               <h2 className="about-heading">99<span className="text-secondary font-bold">%</span></h2>
+               <p className="about-paragraph">Protection</p>
             </li>
 
 
-            <li className="flex flex-col text-center space-y-2">
-               <h2 className="hero-smallHeading">101<span className="text-secondary font-bold">%</span></h2>
-               <p className="text-xs xl:text-sm">Love</p>
+            <li className="about-container">
+               <h2 className="about-heading">101<span className="text-secondary font-bold">%</span></h2>
+               <p className="about-paragraph">Love</p>
             </li>
 
 
