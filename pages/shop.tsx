@@ -1,14 +1,36 @@
-import { collection, DocumentData, onSnapshot } from "firebase/firestore"
-import { NextPage } from "next"
-import { useEffect, useState } from "react"
+import { collection, DocumentData, getDocs } from "firebase/firestore"
+import { GetStaticProps, GetStaticPropsResult, NextPage } from "next"
 import Card from "../components/Card"
-import { auth, db } from "../lib/firebase"
-import { useProducts } from "../lib/hooks"
+import { db } from "../lib/firebase"
 
 
-const shop:NextPage = () => {
-  // Products to be shown on UI
-  const products = useProducts()
+// Pre-render shop page
+export async function getStaticProps() {
+
+   // Collection reference to all the available products
+   const colRef = collection(db, "products")
+ 
+   // Pull products data to display them on UI
+   const docSnap = (await getDocs(colRef)).docs.map(doc => {
+    return {
+      data: doc?.data(),
+      id: doc?.id
+    }
+   })
+
+
+  return {
+    props: {
+      data: JSON.stringify(docSnap)
+    }
+  }
+
+} 
+
+const shop:NextPage = ({ data }: any) => { 
+  const products = JSON.parse(data).map((doc:DocumentData) => doc)
+
+  
 
   return (
         <main>
@@ -22,12 +44,12 @@ const shop:NextPage = () => {
 
           {/* Available products */}
        {products && products?.map((product:DocumentData) => (
-        <Card image={product?.data().image}
-         category={product?.data().category}
-         id={product?.id}
-         key={product?.id} 
-         name={product?.data().name} 
-         price={product?.data().price}
+        <Card image={product?.data.image}
+         category={product?.data.category}
+         id={product.id}
+         key={product.id} 
+         name={product?.data.name} 
+         price={product?.data.price}
          />
        ))}
        </section>
