@@ -123,7 +123,8 @@ const Checkout = ( {  setOrder }:Props ):JSX.Element => {
    <input type="email" {...register("email", 
    { required: true, 
    disabled: address === "profileAddress" && true, 
-   maxLength: { value: 25, message: "Email limit is 25 chars" } })} 
+   minLength: { value: 7, message: "Email is too short" }, 
+   maxLength: { value: 25, message: "Email limit is 25 characters" } })} 
    className={` checkout-input
    ${address === "new" ? " placeholder:text-secondary text-secondary" : "text-primary placeholder:text-third"}`} 
    placeholder="abcde@gmail.com"/>
@@ -144,7 +145,8 @@ const Checkout = ( {  setOrder }:Props ):JSX.Element => {
    <input type="number" {...register("phoneNumber",
     { required: true, 
       disabled: address === "profileAddress" && true, 
-      maxLength: { value: 11, message: "Phone number limit is 11 chars" } })} 
+      minLength: { value: 8, message: "Phone number is too short" }, 
+      maxLength: { value: 11, message: "Phone number limit is 11 characters" } })} 
       className={` checkout-input
    ${address === "new" ? " placeholder:text-secondary text-secondary" : "text-primary placeholder:text-third"}`} 
    placeholder="+0743825731"/>
@@ -164,7 +166,8 @@ const Checkout = ( {  setOrder }:Props ):JSX.Element => {
    <input type="text" {...register("country", 
    { required: true, 
     disabled: address === "profileAddress" && true,
-    maxLength: { value: 15, message: "Country limit is 15 chars" } })} 
+    minLength: { value: 3, message: "Country is too short" },
+    maxLength: { value: 15, message: "Country limit is 15 characters" } })} 
     className={` checkout-input
    ${address === "new" ? " placeholder:text-secondary text-secondary" : "text-primary placeholder:text-third"}`} 
    placeholder="ex: Romania"/>
@@ -183,7 +186,8 @@ const Checkout = ( {  setOrder }:Props ):JSX.Element => {
 
    <input type="text" {...register("city", 
    { required: true, disabled: address === "profileAddress" && true, 
-    maxLength: { value: 15, message: "City limit is 15 chars" } })} 
+    minLength: { value: 3, message: "City is too short" },
+    maxLength: { value: 15, message: "City limit is 15 characters" } })} 
     className={` checkout-input
     ${address === "new" ? " placeholder:text-secondary text-secondary" : "text-primary placeholder:text-third"}`} 
      placeholder="Timisoara"/>
@@ -204,7 +208,8 @@ const Checkout = ( {  setOrder }:Props ):JSX.Element => {
    <input type="text" {...register("deliveryAddress", 
    { required: true, 
     disabled: address === "profileAddress" && true, 
-    maxLength: { value: 30, message: "Delivery adress limit is 30 chars" } },)}
+    minLength: { value: 5, message: "Delivery is too short" },
+    maxLength: { value: 30, message: "Delivery adress limit is 30 characters" } },)}
     className={`checkout-input 
     ${address === "new" ? " placeholder:text-secondary text-secondary" : "text-primary placeholder:text-third"}`} 
     placeholder="Street"/>
