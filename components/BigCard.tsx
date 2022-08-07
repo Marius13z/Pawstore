@@ -1,4 +1,5 @@
 import { collection, doc, onSnapshot, setDoc, updateDoc } from "firebase/firestore";
+import Image from "next/image";
 import { useContext, useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { UserContext } from "../lib/context";
@@ -76,13 +77,10 @@ const BigCard:React.FC<Props> = ({image, id, description, price, name}) => {
   return (
     <section className="flex flex-col items-center md:justify-center flex-grow md:flex-row md:space-y-0 md:space-x-24 space-y-12">
 
-    <div className="relative">
+    <div className="relative min-w-[300px] min-h-[290px] max-w-[300px] max-h-[290px]
+     md:min-w-[330px] md:min-h-[320px] md:max-w-[330px] md:max-h-[320px] border rounded-md shadow-lg overflow-hidden">
         {/* Product image */}
-       <img className="z-10 relative object-fit min-w-[300px] min-h-[290px] max-w-[300px] max-h-[290px]
-     md:min-w-[330px] md:min-h-[320px] md:max-w-[330px] md:max-h-[320px] shadow-lg
-        rounded-md" src={image}/>
-       <div className="bg-primary transition duration-350 top-0
-        absolute blur-sm opacity-70 w-[300px] h-[290px] md:w-[330px] md:h-[320px] "></div>
+        <Image loading="eager" layout="fill" objectFit="contain" className="z-10"  src={image}/>
      </div>
 
      <ul className="flex-col space-y-2">
