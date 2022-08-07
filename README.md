@@ -1,23 +1,29 @@
-# Next.js + Tailwind CSS Example
+# Pawstore
 
-This example shows how to use [Tailwind CSS](https://tailwindcss.com/) [(v3.0)](https://tailwindcss.com/blog/tailwindcss-v3) with Next.js. It follows the steps outlined in the official [Tailwind docs](https://tailwindcss.com/docs/guides/nextjs).
+Pawstore is an app built with NEXT JS, React and Firebase.
 
-## Deploy your own
+## Purpose
 
-Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-example) or preview live with [StackBlitz](https://stackblitz.com/github/vercel/next.js/tree/canary/examples/with-tailwindcss)
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/vercel/next.js/tree/canary/examples/with-tailwindcss&project-name=with-tailwindcss&repository-name=with-tailwindcss)
+Mainly looking to sell products like treats, leash or toys for pets in the mission to bring highest customer satisfaction to its clients.
 
 ## How to use
 
-Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init), [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/), or [pnpm](https://pnpm.io) to bootstrap the example:
+User can page throught the page to look for products, either by hitting the shop now button, the search bar or the the navigation links [Treats/Toys/Leash].
+In order to buy a product he has to access one and add it to cart. If he has added to cart the user can checkout with his profile delivery address or a new one, also he can choose to pay with card via Stripe or simply with cash at delivery point. 
 
-```bash
-npx create-next-app --example with-tailwindcss with-tailwindcss-app
-# or
-yarn create next-app --example with-tailwindcss with-tailwindcss-app
-# or
-pnpm create next-app --example with-tailwindcss with-tailwindcss-app
-```
+The user can also edit his delivery address directly from his profile.
 
-Deploy it to the cloud with [Vercel](https://vercel.com/new?utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
+To log in the user will have to go to homepage and hit sign in.
+
+On small devices like phones user can click on the menu to search for products and click on the "X Circle Icon" in order to see the whole menu, which will
+close the search navigation bar.
+
+Through buttons on the navbar right side the user can access the cart, searchbar or his profile.
+
+## Restrictions
+
+User can only buy products if he's logged in, he can't checkout if he has no products in cart and neither can he access other users profile
+
+## Contact
+
+User can contact the owner of Pawstore via "Get in touch" button that will appear only if he's logged in or throught "Contact us" in navbar.
