@@ -1,6 +1,5 @@
 import { NextPage } from "next"
 import Product from "../../components/Product";
-import ProductCard from "../../components/ProductCard";
 import { useProductData, useProductPath } from "../../lib/hooks";
 
 
