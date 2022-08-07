@@ -24,7 +24,7 @@ const Card: React.FC<Product> = ({ category, name, price, image, id }) => {
         
         <li className="w-[70px] h-[70px] relative sm:w-[110px] sm:h-[110px] md:w-[90px] md:h-[90px] lg:w-[140px] lg:h-[140px]">
         {/* Products Image */}
-       <Image loading="eager" layout="fill" objectFit="contain"  src={image}/>
+       <Image  layout="fill" objectFit="contain"  src={image}/>
         </li>
 
        <li>

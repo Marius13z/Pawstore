@@ -80,7 +80,7 @@ const BigCard:React.FC<Props> = ({image, id, description, price, name}) => {
     <div className="relative min-w-[300px] min-h-[290px] max-w-[300px] max-h-[290px]
      md:min-w-[330px] md:min-h-[320px] md:max-w-[330px] md:max-h-[320px] border rounded-md shadow-lg overflow-hidden">
         {/* Product image */}
-        <Image loading="eager" layout="fill" objectFit="contain" className="z-10"  src={image}/>
+        <Image layout="fill" objectFit="contain" className="z-10"  src={image}/>
      </div>
 
      <ul className="flex-col space-y-2">
