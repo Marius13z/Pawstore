@@ -1,12 +1,24 @@
 import type { NextPage } from 'next' 
 import Products from '../../components/Products'
+import { useCategoryProductsData } from '../../lib/hooks'
 
+// Pre-render leash page
+export async function getStaticProps() {
 
+    const docsnap = await useCategoryProductsData("leash").then(data => JSON.stringify(data))
 
-const leash: NextPage = () => {
+    return {
+      props: {
+        data: docsnap
+      }
+    }
+
+} 
+
+const leash: NextPage = ({data}: any) => {
 
   return (
-    <Products category={"leash"}/>
+    <Products productsData={data}/>  
   )
 }
 

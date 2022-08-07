@@ -1,6 +1,6 @@
 import { collection, DocumentData, getDocs } from "firebase/firestore"
 import { GetStaticProps, GetStaticPropsResult, NextPage } from "next"
-import Card from "../components/Card"
+import Card from "../components/ProductsCard"
 import { db } from "../lib/firebase"
 
 

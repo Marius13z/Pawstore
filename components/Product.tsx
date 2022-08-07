@@ -1,38 +1,23 @@
-import { doc, DocumentData, onSnapshot} from "firebase/firestore";
-import {useRouter} from 'next/router'
-import { useEffect, useState } from "react";
-import BigCard from "../components/BigCard";
-import { db } from "../lib/firebase";
-
-const Product = () => {
-  // Products that will be displayed on UI
-  const [product, setProduct] = useState<DocumentData>()
-  // Router used to push users to other pages
-  const router = useRouter();
-  // Current accessed slug
-  const { slug } = router.query
-
-  // Reference to products based on slug
-  const docRef = doc(db, "products", `${slug}`)
-
-  // Pull the specific product based on the slug the user has navigated to
-  useEffect(() => {
-   return onSnapshot(docRef, (doc) => setProduct(doc))
-  }, [slug])
+import ProductCard from "./ProductCard"
 
 
+const Product = ({ productData, productDataId }: any ) => {
+ // Parse product and product id so it can be used 
+ const product = JSON.parse(productData)
+ const productId = JSON.parse(productDataId)
 
   return (
-    <main className="min-h-[80vh] mt-10 flex md:px-16 md:items-center">
+    <main className="product-container">
       {/* Card used to show a specific product */}
-        <BigCard image={product?.data().image} 
-        key={product?.id} 
-        id={product?.id} 
-        description={product?.data().description} 
-        name={product?.data().name} 
-        price={product?.data().price}/>
+        <ProductCard image={product?.image} 
+        key={productId} 
+        id={productId} 
+        description={product?.description} 
+        name={product?.name} 
+        price={product?.price}/>
     </main>
   )
 }
+
 
 export default Product
