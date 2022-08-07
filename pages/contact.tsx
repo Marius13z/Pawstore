@@ -12,8 +12,6 @@ type FormData = {
 }
 
 const contact:NextPage = () => {
-  // Check if user sent the form or not
-  const [sentForm, setSentForm] = useState<boolean>()
   // Router used to push user to other pages
   const router = useRouter()
   const { register, formState: { errors }, handleSubmit } = useForm<FormData>()

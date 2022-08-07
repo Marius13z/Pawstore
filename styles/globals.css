@@ -16,6 +16,7 @@
     }
   }
 
+
 @layer components {
     .btn-nav {
         @apply border rounded-lg border-primary p-1 shadow-md active:scale-90 cursor-pointer transition duration-100 ease-out;
@@ -81,5 +82,12 @@
 
     .menu-link {
         @apply  text-white cursor-pointer  duration-300 ease-out transition text-xl hover:text-primary
+    }
+
+    .products-container {
+        @apply grid grid-flow-col grid-rows-4 md:grid-rows-2 mt-20 mb-16 justify-center gap-y-5 gap-x-5 lg:gap-x-10 lg:gap-y-10 px-10 
+    }
+    .product-container {
+        @apply min-h-[80vh] mt-10 flex md:px-16 md:items-center
     }
 }

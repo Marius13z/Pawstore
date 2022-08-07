@@ -5,14 +5,14 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useContext } from 'react'
 import { SearchContext } from '../lib/context'
-import { useProducts } from '../lib/hooks'
+import { useProductsData } from '../lib/hooks'
 
 
 const SearchTransition = () => {
  // Consuming global states so the user can access search, close the search and search products
- const { open, setOpen, searchTerm, closeSearch, setCloseSearch} = useContext(SearchContext)
+ const { open, setOpen, searchTerm, closeSearch } = useContext(SearchContext)
  // Available products to search in the search bar
- const products = useProducts()
+ const products = useProductsData()
  // Router used to push user to other pages
  const router = useRouter()
 
