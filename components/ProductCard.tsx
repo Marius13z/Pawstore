@@ -6,6 +6,7 @@ import { auth, db } from "../lib/firebase";
 import { Product } from "../typing";
 
 
+
 const ProductCard:React.FC<Product> = ({image, id, description, price, name}) => {
   // The current quantity of products
     const [quantity, setQuantity] = useState<number>()
@@ -15,10 +16,8 @@ const ProductCard:React.FC<Product> = ({image, id, description, price, name}) =>
     const user = auth.currentUser
     // Reference to user collection
     const colRef = collection(db, "users")
-    // Reference to doc products from cart
+    // Reference to user cart products 
     const docRef = doc(colRef, `${user?.uid}`, "cart", `${id}`)
-
-    
     
     // Get real time snapshot of the quantity of a product in user cart
     useEffect(() => {
