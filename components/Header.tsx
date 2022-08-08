@@ -12,7 +12,7 @@ const Header = () => {
   // Number of unique of products displayed above cart
   const cartProducts = useCartData()
   // Active link based on where user has navigated - for example Treats page
-  const [linkActive, setLinkActive] = useState<string>("treats")
+  const [linkActive, setLinkActive] = useState("treats")
   // Used to open a modal and display the search and other menu items
   const { open, setOpen, setSearchTerm, setCloseSearch } = useContext(SearchContext)
 

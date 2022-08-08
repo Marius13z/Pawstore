@@ -5,6 +5,7 @@ import { ShoppingCartIcon } from "@heroicons/react/outline"
 import { useRouter } from "next/router"
 import { useCartData } from "../lib/hooks"
 import AuthCheck from "../components/AuthCheck"
+import { Product } from "../typing"
 
 
 const cart:NextPage = () => {
@@ -14,8 +15,8 @@ const cart:NextPage = () => {
    const router = useRouter()
 
    // Calculate the bill for user products
-   const calculateSubtotal = products?.map((product:DocumentData) => {
-         return product?.price * product?.quantity
+   const calculateSubtotal = products?.map((product:Product) => {
+         return product?.price * product?.quantity!
       })
 
    const subtotal = calculateSubtotal?.reduce((previousValue: number, currentValue: number) => previousValue + currentValue, 0)

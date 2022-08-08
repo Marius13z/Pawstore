@@ -1,14 +1,14 @@
 import { CashIcon, CreditCardIcon } from "@heroicons/react/outline"
-import { CheckCircleIcon } from "@heroicons/react/solid"
 import axios from "axios"
 import {  DocumentData } from "firebase/firestore"
-import Router, { useRouter } from "next/router"
 import { Dispatch, SetStateAction, useState } from "react"
 import { useForm } from "react-hook-form"
 import toast from "react-hot-toast"
 import getStripe from '../lib/getStripe'
 import { useCartData, useUserFirestoreData } from "../lib/hooks"
+import { CheckoutFormData, Product } from "../typing"
 import Error404 from "./Error404"
+
 
 
 
@@ -16,20 +16,14 @@ interface Props {
     setOrder: Dispatch<SetStateAction<boolean>>
 }
 
-type FormData = {
-    email: string
-    deliveryAddress: string
-    country: string
-    city: string
-    phoneNumber: string
-  };
+
 
   
   
 
-const Checkout = ( {  setOrder }:Props ):JSX.Element => {
+const Checkout = ( { setOrder }:Props ):JSX.Element => {
     // User can choose his saved delivery adress or a new one
-    const [address, setAddress] = useState<string>("profileAddress")
+    const [address, setAddress] = useState("profileAddress")
     // User profile delivery details 
     const user = useUserFirestoreData()
     // User can choose to pay with card or cash
@@ -37,9 +31,9 @@ const Checkout = ( {  setOrder }:Props ):JSX.Element => {
     // All products available in user cart
     const cartProducts = useCartData()
     // Hook to register a new address values, handle validation and errors
-    const { register, formState: { errors }, handleSubmit } = useForm<FormData>()
+    const { register, formState: { errors }, handleSubmit } = useForm<CheckoutFormData>()
     // Store all products so the fetch works otherwise it returns undefined
-     const productsInCart = cartProducts?.map((product:DocumentData) => {
+     const productsInCart = cartProducts?.map((product:Product) => {
       return {
         name: product?.name,
         price: product?.price,

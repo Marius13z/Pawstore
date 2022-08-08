@@ -1,7 +1,8 @@
 import { collection, DocumentData, getDocs } from "firebase/firestore"
-import { GetStaticProps, GetStaticPropsResult, NextPage } from "next"
-import Card from "../components/ProductsCard"
+import { NextPage } from "next"
+import ProductsCard from "../components/ProductsCard"
 import { db } from "../lib/firebase"
+import { ProductData } from "../typing"
 
 
 // Pre-render shop page
@@ -28,7 +29,7 @@ export async function getStaticProps() {
 } 
 
 const shop:NextPage = ({ data }: any) => { 
-  const products = JSON.parse(data).map((doc:DocumentData) => doc)
+  const products = JSON.parse(data).map((doc:ProductData) => doc)
 
   
 
@@ -43,8 +44,8 @@ const shop:NextPage = ({ data }: any) => {
          mt-10 mb-16 justify-center gap-y-5 gap-x-5 lg:gap-x-10 lg:gap-y-10 px-16`}>
 
           {/* Available products */}
-       {products && products?.map((product:DocumentData) => (
-        <Card image={product?.data.image}
+       {products && products?.map((product:ProductData) => (
+        <ProductsCard image={product?.data.image}
          category={product?.data.category}
          id={product.id}
          key={product.id} 

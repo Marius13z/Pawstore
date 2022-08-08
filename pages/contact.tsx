@@ -5,18 +5,15 @@ import { useState } from "react"
 import { useForm } from "react-hook-form"
 import toast from "react-hot-toast"
 import { db } from "../lib/firebase"
+import { ContactFormData } from "../typing"
 
-type FormData = {
-  email: string
-  message: string
-}
 
 const contact:NextPage = () => {
   // Router used to push user to other pages
   const router = useRouter()
-  const { register, formState: { errors }, handleSubmit } = useForm<FormData>()
+  const { register, formState: { errors }, handleSubmit } = useForm<ContactFormData>()
 
-  const onSubmit = async (e: FormData) => {
+  const onSubmit = async (e: ContactFormData) => {
      const colRef = collection(db, "messages")
 
      await addDoc(colRef, {

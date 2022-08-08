@@ -1,4 +1,4 @@
-import {  DocumentData } from 'firebase/firestore'
+
 import type { NextPage } from 'next' 
 import Products from '../../components/Products'
 import { useCategoryProductsData } from '../../lib/hooks'

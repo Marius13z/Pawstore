@@ -8,17 +8,10 @@ import { doc, updateDoc} from 'firebase/firestore'
 import toast from 'react-hot-toast'
 import { useUserFirestoreData } from '../../lib/hooks'
 import AuthCheck from '../../components/AuthCheck'
+import { CheckoutFormData } from '../../typing'
 
 
 
-
-// What data to expect from the form
-type FormData = {
-  deliveryAddress: string;
-  country: string;
-  city: string;
-  phoneNumber: string;
-};
 
 
 const userprofile: NextPage = () => {
@@ -31,10 +24,10 @@ const userprofile: NextPage = () => {
   // Used to show the user details for his profile page
   const user = useUserFirestoreData()
   // Used to collect, validate and send data to the server
-  const { register, formState: { errors }, handleSubmit, reset } = useForm<FormData>()
+  const { register, formState: { errors }, handleSubmit, reset } = useForm<CheckoutFormData>()
 
   // To update user profile data
-  const onSubmit = async (data: FormData) => {
+  const onSubmit = async (data: CheckoutFormData) => {
     // Update the user doc with the new data and reset input field values
     await updateDoc(doc(db, "users", user?.uid), {
       deliveryAddress: data?.deliveryAddress,
@@ -43,7 +36,7 @@ const userprofile: NextPage = () => {
       phoneNumber: data?.phoneNumber
     })
       .then(() => setIsEditing(false))
-      .then(() => reset({ deliveryAddress: "", city: "", country: "", phoneNumber: "" }))
+      .then(() => reset({ deliveryAddress: "", city: "", country: "", phoneNumber: 0 }))
 
     // After user has edited his details throw a toast
     toast.success("You have edited your details!")

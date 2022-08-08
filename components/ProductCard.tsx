@@ -1,26 +1,16 @@
 import { collection, doc, onSnapshot, setDoc, updateDoc } from "firebase/firestore";
 import Image from "next/image";
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
-import { UserContext } from "../lib/context";
 import { auth, db } from "../lib/firebase";
+import { Product } from "../typing";
 
 
-interface Props {
-    image: string;
-    description: string;
-    price: number;
-    name: string;
-    id: string;
-}
-
-
-
-const ProductCard:React.FC<Props> = ({image, id, description, price, name}) => {
+const ProductCard:React.FC<Product> = ({image, id, description, price, name}) => {
   // The current quantity of products
     const [quantity, setQuantity] = useState<number>()
     // Debouncer to avoid users spamming the add to cart button
-    const [debouncer, setDebouncer] = useState<boolean>(false)
+    const [debouncer, setDebouncer] = useState(false)
     // Current user details
     const user = auth.currentUser
     // Reference to user collection

@@ -5,16 +5,9 @@ import { useContext } from "react";
 import toast from "react-hot-toast";
 import { UserContext } from "../lib/context";
 import { db } from "../lib/firebase";
+import { Product } from "../typing";
 
-interface Props {
-  image: string;
-  name: string;
-  price: number;
-  id: string;
-  quantity: number;
-}
-
-const UserCart:React.FC<Props> = ({ image, name, price, id, quantity }) => {
+const UserCart:React.FC<Product> = ({ image, name, price, id, quantity }) => {
   // Currently logged in user details
   const user = useContext(UserContext)
   // Router used to push users to other pages
@@ -52,7 +45,7 @@ const UserCart:React.FC<Props> = ({ image, name, price, id, quantity }) => {
             {/* Button to delete products from cart */}
             <button type="button" onClick={deleteProductFromCart}>
               <XCircleIcon className="group-hover:h-4 sm:group-hover:h-5 lg:group-hover:h-6 relative left-[40px] sm:left-[8px] md:left-[20px] bottom-[33px] sm:bottom-[38px] md:bottom-[40px] lg:left-[123px] lg:bottom-[55px] 
-               text-primary hover:rotate-90 transition duration-300 hover:text-red-500"/>
+               text-primary hover:rotate-90 transition-all duration-300 hover:text-red-500"/>
             </button>
 
         </div>   
