@@ -1,6 +1,5 @@
 import { CashIcon, CreditCardIcon } from "@heroicons/react/outline"
 import axios from "axios"
-import {  DocumentData } from "firebase/firestore"
 import { Dispatch, SetStateAction, useState } from "react"
 import { useForm } from "react-hook-form"
 import toast from "react-hot-toast"
@@ -16,10 +15,6 @@ interface Props {
     setOrder: Dispatch<SetStateAction<boolean>>
 }
 
-
-
-  
-  
 
 const Checkout = ( { setOrder }:Props ):JSX.Element => {
     // User can choose his saved delivery adress or a new one

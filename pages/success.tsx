@@ -3,7 +3,6 @@ import { auth, db } from "../lib/firebase"
 import { useCartData } from "../lib/hooks"
 import Confetti from 'react-dom-confetti'
 import { useRouter } from "next/router"
-import Error404 from "../components/Error404"
 import AuthCheck from "../components/AuthCheck"
 
 

@@ -1,13 +1,7 @@
 import Image from "next/image"
 import { useRouter } from "next/router"
+import { Product } from "../typing"
 
-type Product = {
-  image: string,
-  id: string,
-  category: string,
-  name: string,
-  price: number
-}
 
 const ProductsCard: React.FC<Product> = ({ category, name, price, image, id }) => {
   // Router used to push users to other pages
