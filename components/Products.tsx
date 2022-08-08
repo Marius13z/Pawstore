@@ -13,7 +13,7 @@ const Products = ( { productsData }:any ) => {
     {products && products.map((product:ProductData) => {
       return(
     <ProductsCard 
-      category={product?.data.category} 
+      category={product?.data.category!} 
       name={product?.data.name}
       key={product?.id} 
       id={product?.id} 
