@@ -50,8 +50,6 @@ const success = () => {
 
   return (
 
-    <AuthCheck>
-
     <main className="flex justify-center items-center mt-32">
         <section className="bg-white border border-gray-200 shadow-sm rounded-lg p-6 ">
         <h1 className="text-secondary font-medium text-sm md:text-2xl ">Thanks for buying from us!</h1>
@@ -59,7 +57,6 @@ const success = () => {
         </section>
     </main>
 
-    </AuthCheck>
 
   )
 }
