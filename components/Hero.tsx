@@ -34,7 +34,8 @@ const Hero = () => {
           him to the sign in page */}
           <li>
            <Link href={user ? "/contact" : "/signin"}>
-          <button type="button" className="btn-primary">
+          <button type="button" className=" bg-body text-primary hover:border-primary p-1 hover:border rounded-lg text-xs font-semibold
+        w-32 h-9 transition-all duration-200 ease-out">
             {user ?  (<span className="inline-block">Get in touch <ChevronRightIcon className="h-4 inline-block pb-0.5"/></span>) : 
             (<span className="inline-block"><UsersIcon className="h-4 pr-1 inline-block"/> Sign In</span>)}
             </button>
